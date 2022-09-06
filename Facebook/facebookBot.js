@@ -101,13 +101,13 @@ async function receivedMessage(event) {
   var messageAttachments = message.attachments;
   var quickReply = message.quick_reply;
 
-  if (isEcho) {
-    handleEcho(messageId, appId, metadata);
-    return;
-  } else if (quickReply) {
-    handleQuickReply(senderId, quickReply, messageId);
-    return;
-  }
+  //if (isEcho) {
+    //handleEcho(messageId, appId, metadata);
+    //return;
+  //} else if (quickReply) {
+    //handleQuickReply(senderId, quickReply, messageId);
+    //return;
+  //}
   if (messageText) {
     //send message to dialogflow
     console.log("MENSAJE DEL USUARIO: ", messageText);
