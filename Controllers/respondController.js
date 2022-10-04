@@ -5,7 +5,7 @@ const axios = require("axios");
 //files
 const config = require("../config");
 const dialogflow = require("../dialogflow");
-const { structProtoToJson } = require("./Facebook/helpers/structFunctions");
+const { structProtoToJson } = require("../Facebook/helpers/structFunctions");
 
 
 
