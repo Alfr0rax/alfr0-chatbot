@@ -17,6 +17,9 @@ async function handleDialogFlowAction(
     parameters
   ) {
     switch (action) {
+        case "Ubicacion.action":
+            sendTextMessage(sender,"Sos un hijo de la remil *****");
+        break;
       default:
         //unhandled action, just send back the text
         handleMessages(messages, sender);
