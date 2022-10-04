@@ -4,7 +4,7 @@ const uuid = require("uuid");
 const axios = require("axios");
 //files
 const config = require("../config");
-const dialogflow = require("../dialogflow");
+const dialogflow = require("../dialogflowController");
 const { structProtoToJson } = require("../Facebook/helpers/structFunctions");
 
 const sessionIds = new Map();
@@ -382,11 +382,6 @@ async function handleMessage(message, sender) {
   }
 
 module.exports = {
-    handleDialogFlowAction,
-    handleMessage,
-    handleCardMessages,
-    handleMessages,
     sendToDialogFlow,
-    handleDialogFlowResponse,
     sendTextMessage
 }

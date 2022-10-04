@@ -29,8 +29,6 @@ if (!config.FB_APP_SECRET) {
   throw new Error("missing FB_APP_SECRET");
 }
 
-const sessionIds = new Map();
-
 // for Facebook verification
 router.get("/webhook/", function (req, res) {
   if (
@@ -131,14 +129,6 @@ async function handleQuickReply(senderId, quickReply, messageId) {
   respond.sendToDialogFlow(senderId, quickReplyPayload);
 }
 
-
-
-
-////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////
-
-
 async function receivedPostback(event) {
   var senderId = event.sender.id;
   var recipientID = event.recipient.id;
@@ -160,7 +150,5 @@ async function receivedPostback(event) {
     timeOfPostback
   );
 }
-
-
 
 module.exports = router;
