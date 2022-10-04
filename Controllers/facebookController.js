@@ -4,7 +4,7 @@ const router = express.Router();
 
 //files
 const config = require("../config");
-const respond = require('../Controllers/respondController');
+const respond = require('./respondController');
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {

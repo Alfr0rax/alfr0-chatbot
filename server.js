@@ -18,7 +18,7 @@ app.use(
   })
 );
 
-app.use("/messenger", require("./Facebook/facebookBot"));
+app.use("/messenger", require("./Controllers/facebookController"));
 
 app.get("/", (req, res) => {
   return res.send("Chatbot Funcionando 🤖🤖🤖");
