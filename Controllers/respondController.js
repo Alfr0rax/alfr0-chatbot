@@ -7,7 +7,7 @@ const config = require("../config");
 const dialogflow = require("../dialogflow");
 const { structProtoToJson } = require("../Facebook/helpers/structFunctions");
 
-
+const sessionIds = new Map();
 
 async function handleDialogFlowAction(
     sender,
@@ -177,6 +177,7 @@ async function handleMessage(message, sender) {
       sendTextMessage(sender, responseText);
     }
   }
+
   async function setSessionAndUser(senderId) {
     try {
       if (!sessionIds.has(senderId)) {
