@@ -4,7 +4,7 @@ const uuid = require("uuid");
 const axios = require("axios");
 //files
 const config = require("../config");
-const dialogflow = require("../dialogflowController");
+const dialogflow = require("./dialogflowController");
 const { structProtoToJson } = require("../Facebook/helpers/structFunctions");
 
 const sessionIds = new Map();
