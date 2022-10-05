@@ -1,4 +1,3 @@
-const express = require("express");
 const request = require("request");
 const uuid = require("uuid");
 const axios = require("axios");
@@ -17,12 +16,15 @@ async function handleDialogFlowAction(
     parameters
   ) {
     switch (action) {
-        case "Ubicacion.action":
+        case "04.Ubicación":
             sendTextMessage(sender,"Sos un hijo de la remil *****");
             sendTextMessage(sender,"y vete a chingar a tu madre");
         break;
+
+
+
       default:
-        //unhandled action, just send back the text
+        // acción no controlada, solo devuelve el texto
         handleMessages(messages, sender);
     }
   }
@@ -85,7 +87,7 @@ async function handleMessage(message, sender) {
     }
   }
   
-  async function handleCardMessages(messages, sender) {
+  async function handleCardMessages(messages, sender) { //Envia el Mensaje que se tiene en Dialogflow
     let elements = [];
     for (let m = 0; m < messages.length; m++) {
       let message = messages[m];
@@ -213,7 +215,7 @@ async function handleMessage(message, sender) {
       };
     }
   }
-  async function sendTextMessage(recipientId, text) {
+  async function sendTextMessage(recipientId, text) { //Envia el Mensaje que se escribe en el codigo
     if (text.includes("{first_name}") || text.includes("{last_name}")) {
       let userData = await getUserData(recipientId);
       text = text
@@ -231,8 +233,8 @@ async function handleMessage(message, sender) {
     await callSendAPI(messageData);
   }
 
-    //Send an image using the Send API.   
-  async function sendImageMessage(recipientId, imageUrl) {
+     
+  async function sendImageMessage(recipientId, imageUrl) {//Enviar una imagen utilizando la API de envío.
     var messageData = {
       recipient: {
         id: recipientId,
@@ -248,9 +250,8 @@ async function handleMessage(message, sender) {
     };
     await callSendAPI(messageData);
   }
-
-    //Send a button message using the Send API.
-  async function sendButtonMessage(recipientId, text, buttons) {
+ 
+  async function sendButtonMessage(recipientId, text, buttons) {//Enviar un mensaje de botón utilizando la API de envío.
     var messageData = {
       recipient: {
         id: recipientId,
@@ -288,8 +289,7 @@ async function handleMessage(message, sender) {
     await callSendAPI(messageData);
   }  
 
-  //Send a message with Quick Reply buttons.    
-  async function sendQuickReply(recipientId, text, replies, metadata) {
+  async function sendQuickReply(recipientId, text, replies, metadata) {//Enviar un mensaje con botones de respuesta rápida.
     var messageData = {
       recipient: {
         id: recipientId,
@@ -303,9 +303,7 @@ async function handleMessage(message, sender) {
   
     await callSendAPI(messageData);
   }  
-
-  //Turn typing indicator on    
-  function sendTypingOn(recipientId) {
+  function sendTypingOn(recipientId) {//Activa el indicador de escritura
     var messageData = {
       recipient: {
         id: recipientId,
@@ -315,9 +313,7 @@ async function handleMessage(message, sender) {
   
     callSendAPI(messageData);
   }  
-
-  //Turn typing indicator off    
-  function sendTypingOff(recipientId) {
+  function sendTypingOff(recipientId) {//Apaga el indicador de escritura
     var messageData = {
       recipient: {
         id: recipientId,
@@ -328,8 +324,8 @@ async function handleMessage(message, sender) {
     callSendAPI(messageData);
   }
 
-  /*Call the Send API. The message data goes in the body. If successful, we'll
-  get the message id in a response*/
+/*Llamar a la API de envío. Los datos del mensaje van en el cuerpo. Si tiene éxito, lo haremos
+   obtener la identificación del mensaje en una respuesta*/
   function callSendAPI(messageData) {
     return new Promise((resolve, reject) => {
       request(
