@@ -21,8 +21,10 @@ async function handleDialogFlowAction(
       sendTextMessage(sender, "y");
       break;
     case "05.Carrusel_Imagenes":
+      handleMessages(messages, sender);
       let tarjetas = [];
       cargarTarjetas(tarjetas);
+      console.log(tarjetas);
       sendGenericMessage(sender, tarjetas);
       break;
 
