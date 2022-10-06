@@ -26,9 +26,11 @@ async function handleDialogFlowAction(
     case "05.Carrusel_Imagenes":
       carruselImagenes(sender);
       break;
-
+    case "07.Ver_Informacion":
+      VerInformacion();
+      break;
     default:
-      // acción no controlada, solo devuelve el texto
+      // acción no controlada, solo devuelve la respuesta del dialogflow
       handleMessages(messages, sender);
   }
 }
@@ -405,13 +407,17 @@ function carruselImagenes(sender) {
   cargarTarjetas(tarjetas);
   sendGenericMessage(sender, tarjetas);
 }
+function VerInformacion() {
+  sendImageMessage(sender);
+}
+//#################################################
 
 function cargarTarjetas(tarjetas) {
   let productos = cargarProductos();
   productos.forEach((producto) => {
     tarjetas.push({
       title: producto.name,
-      image_url: producto.img,
+      image_url: producto.img[0],
       subtitle: "Precio: " + producto.precio + " USD",
       buttons: [
         {
@@ -433,7 +439,6 @@ function cargarTarjetas(tarjetas) {
     });
   });
 }
-
 function cargarProductos() {
   return [
     {
@@ -442,7 +447,12 @@ function cargarProductos() {
       precio: 45,
       serie: "Sword Art Online",
       personaje: "Kirito",
-      img: "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      img: [
+        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      ],
     },
     {
       id: 02,
@@ -450,7 +460,12 @@ function cargarProductos() {
       precio: 45,
       serie: "Sword Art Online",
       personaje: "Asuna",
-      img: "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      img: [
+        "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+        "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+        "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+        "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      ],
     },
   ];
 }
