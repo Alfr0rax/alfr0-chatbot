@@ -365,7 +365,6 @@ function handleDialogFlowResponse(sender, response) {
     sendTextMessage(sender, responseText);
   }
 }
-
 async function setSessionAndUser(senderId) {
   try {
     if (!sessionIds.has(senderId)) {
@@ -415,7 +414,6 @@ async function sendTextMessage(recipientId, text) {
   };
   await callSendAPI(messageData);
 }
-
 async function sendImageMessage(recipientId, imageUrl) {
   //Enviar una imagen utilizando la API de envío.
   var messageData = {
@@ -433,7 +431,6 @@ async function sendImageMessage(recipientId, imageUrl) {
   };
   await callSendAPI(messageData);
 }
-
 async function sendButtonMessage(recipientId, text, buttons) {
   //Enviar un mensaje de botón utilizando la API de envío.
   var messageData = {
@@ -453,7 +450,6 @@ async function sendButtonMessage(recipientId, text, buttons) {
   };
   await callSendAPI(messageData);
 }
-
 async function sendGenericMessage(recipientId, elements) {
   var messageData = {
     recipient: {
@@ -472,7 +468,6 @@ async function sendGenericMessage(recipientId, elements) {
 
   await callSendAPI(messageData);
 }
-
 async function sendQuickReply(recipientId, text, replies, metadata) {
   //Enviar un mensaje con botones de respuesta rápida.
   var messageData = {
@@ -555,7 +550,6 @@ function callSendAPI(messageData) {
     );
   });
 }
-
 function isDefined(obj) {
   if (typeof obj == "undefined") {
     return false;
@@ -584,11 +578,11 @@ function carruselImagenes(sender) {
   cargarTarjetas(tarjetas);
   sendGenericMessage(sender, tarjetas);
 }
-await function VerInformacion(sender, i) {
+async function VerInformacion(sender, i) {
   listaActual[i].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
-  sendTextMessage(
+  await sendTextMessage(
     sender,
     "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
   );
@@ -615,7 +609,7 @@ await function VerInformacion(sender, i) {
       "*Stock:* " +
       listaActual[i].stock
   );
-};
+}
 //#################################################
 
 function cargarTarjetas(tarjetas) {
@@ -646,7 +640,6 @@ function cargarTarjetas(tarjetas) {
     });
   }
 }
-
 function cargarProductos() {
   let p = [];
   for (let i = 0; i < 5; i++) {
@@ -655,7 +648,6 @@ function cargarProductos() {
   n += 5;
   return p;
 }
-
 function setIndex(x) {
   index = x;
 }
