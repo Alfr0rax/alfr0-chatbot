@@ -206,6 +206,9 @@ async function handleDialogFlowAction(
     case "07.Ver_Informacion":
       VerInformacion(sender, index);
       break;
+    case "":
+      atras(sender, action, messages, contexts, parameters);
+      break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
       handleMessages(messages, sender);
@@ -622,7 +625,11 @@ async function VerInformacion(sender, i) {
         payload: "Atrás",
       },
     ]);
-  }, 5000);
+  }, 4000);
+}
+function atras(sender, action, messages, contexts, parameters) {
+  n -= 5;
+  handleDialogFlowAction(sender, action, messages, contexts, parameters);
 }
 //#################################################
 
