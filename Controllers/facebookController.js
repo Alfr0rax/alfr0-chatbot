@@ -141,15 +141,19 @@ async function receivedPostback(event) {
       respond.sendToDialogFlow(senderId, payload);
       break;
     case "Ver Información1":
+      respond.index = 1;
       respond.sendToDialogFlow(senderId, payload);
       break;
     case "Ver Información2":
+      respond.index = 2;
       respond.sendToDialogFlow(senderId, payload);
       break;
     case "Ver Información3":
+      respond.index = 3;
       respond.sendToDialogFlow(senderId, payload);
       break;
     case "Ver Información4":
+      respond.index = 4;
       respond.sendToDialogFlow(senderId, payload);
       break;
     default:
