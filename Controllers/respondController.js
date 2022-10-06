@@ -17,6 +17,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Kirito",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
       "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
@@ -30,6 +34,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Asuna",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
       "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
@@ -43,6 +51,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Kirito",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
       "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
@@ -56,6 +68,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Asuna",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
       "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
@@ -69,6 +85,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Kirito",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
       "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
@@ -82,6 +102,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Asuna",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
       "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
@@ -95,6 +119,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Kirito",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
       "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
@@ -108,6 +136,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Asuna",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
       "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
@@ -121,6 +153,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Kirito",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
       "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
@@ -134,6 +170,10 @@ let todosproductos = [
     precio: 45,
     serie: "Sword Art Online",
     personaje: "Asuna",
+    escala: "No (Altura: 9 cm)",
+    peso: "214g",
+    material: "PVC, ABS",
+    stock: 5,
     img: [
       "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
       "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
@@ -164,7 +204,6 @@ async function handleDialogFlowAction(
       carruselImagenes(sender);
       break;
     case "07.Ver_Informacion":
-      handleMessages(messages, sender);
       VerInformacion(sender, index);
       break;
     default:
@@ -546,11 +585,36 @@ function carruselImagenes(sender) {
   sendGenericMessage(sender, tarjetas);
 }
 function VerInformacion(sender, i) {
-  console.log(i);
-  console.log(listaActual[0].img);
   listaActual[i].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
+  sendTextMessage(
+    sender,
+    "Aquí tienes la Información de " + listaActual[i].name
+  );
+  sendTextMessage(
+    sender,
+    "Precio: " +
+      listaActual[i].precio +
+      " USD\n" +
+      "Serie: " +
+      listaActual[i].serie +
+      "\n" +
+      "Personaje: " +
+      listaActual[i].personaje +
+      "\n" +
+      "Escala: " +
+      listaActual[i].escala +
+      "\n" +
+      "Peso: " +
+      listaActual[i].peso +
+      "\n" +
+      "Material: " +
+      listaActual[i].material +
+      "\n" +
+      "Stock: " +
+      listaActual[i].stock
+  );
 }
 //#################################################
 
