@@ -439,6 +439,7 @@ function cargarTarjetas(tarjetas, select) {
         },
       ],
     });
+    a = a + 1;
   });
 }
 function cargarProductos() {
