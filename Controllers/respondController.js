@@ -204,7 +204,7 @@ async function handleDialogFlowAction(
       carruselImagenes(sender);
       break;
     case "07.Ver_Informacion":
-      await VerInformacion(sender, index);
+      VerInformacion(sender, index);
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
@@ -579,9 +579,6 @@ function carruselImagenes(sender) {
   sendGenericMessage(sender, tarjetas);
 }
 async function VerInformacion(sender, i) {
-  await listaActual[i].img.forEach((imagen) => {
-    sendImageMessage(sender, imagen);
-  });
   await sendTextMessage(
     sender,
     "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
@@ -609,6 +606,21 @@ async function VerInformacion(sender, i) {
       "*Stock:* " +
       listaActual[i].stock
   );
+  await listaActual[i].img.forEach((imagen) => {
+    sendImageMessage(sender, imagen);
+  });
+  await sendButtonMessage(sender, " ", [
+    {
+      type: "postback",
+      title: "Añadir Pedido",
+      payload: "Añadir Pedido",
+    },
+    {
+      type: "postback",
+      title: "Atrás",
+      payload: "Atrás",
+    },
+  ]);
 }
 //#################################################
 
