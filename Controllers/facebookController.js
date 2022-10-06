@@ -6,6 +6,9 @@ const router = express.Router();
 const config = require("../config");
 const respond = require("./respondController");
 
+//mongodb models
+const Users = require("../Models/Users");
+
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
   throw new Error("missing FB_PAGE_TOKEN");
@@ -103,6 +106,8 @@ async function receivedMessage(event) {
     handleQuickReply(senderId, quickReply, messageId);
     return;
   }
+
+  saveUserData(senderId);
   if (messageText) {
     //send message to dialogflow
     console.log("MENSAJE DEL USUARIO: ", messageText);
@@ -110,6 +115,18 @@ async function receivedMessage(event) {
   } else if (messageAttachments) {
     handleMessageAttachments(messageAttachments, senderId);
   }
+}
+function saveUserData(facebookID) {
+  let chatUser = new Users({
+    firstName: "",
+    lastName: "",
+    facebookId: facebookID,
+    email: "",
+  });
+  chatUser.save((err, res) => {
+    if (err) return console.log(err);
+    console.log("Se creó un Usuario: ", res);
+  });
 }
 
 function handleMessageAttachments(messageAttachments, senderId) {
