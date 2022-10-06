@@ -579,6 +579,9 @@ function carruselImagenes(sender) {
   sendGenericMessage(sender, tarjetas);
 }
 async function VerInformacion(sender, i) {
+  listaActual[i].img.forEach((imagen) => {
+    sendImageMessage(sender, imagen);
+  });
   await sendTextMessage(
     sender,
     "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
@@ -618,10 +621,6 @@ async function VerInformacion(sender, i) {
       payload: "Atrás",
     },
   ]);
-
-  await listaActual[i].img.forEach((imagen) => {
-    sendImageMessage(sender, imagen);
-  });
 }
 //#################################################
 
