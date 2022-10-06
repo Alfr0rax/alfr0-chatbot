@@ -136,7 +136,7 @@ async function receivedPostback(event) {
 
   var payload = event.postback.payload;
   switch (payload) {
-    case "Ver Información" + Number:
+    case "Ver Información":
       respond.sendToDialogFlow(senderId, payload);
       break;
     default:
