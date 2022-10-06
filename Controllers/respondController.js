@@ -426,7 +426,7 @@ function cargarTarjetas(tarjetas) {
       buttons: [
         {
           type: "postback",
-          title: "Ver Información " + a,
+          title: "Ver Información",
           payload: "Ver Información78454629",
         },
         {
