@@ -631,8 +631,8 @@ function atras(sender, action, messages, contexts, parameters) {
   n -= 5;
   handleDialogFlowAction(
     sender,
+    action,
     "05.Carrusel_Imagenes",
-    messages,
     contexts,
     parameters
   );
