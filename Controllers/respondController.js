@@ -584,38 +584,38 @@ function carruselImagenes(sender) {
   cargarTarjetas(tarjetas);
   sendGenericMessage(sender, tarjetas);
 }
-function VerInformacion(sender, i) {
+await function VerInformacion(sender, i) {
   listaActual[i].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
   sendTextMessage(
     sender,
-    "Aquí tienes la Información de " + listaActual[i].name
+    "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
   );
   sendTextMessage(
     sender,
-    "Precio: " +
+    "*Precio:* " +
       listaActual[i].precio +
       " USD\n" +
-      "Serie: " +
+      "*Serie:* " +
       listaActual[i].serie +
       "\n" +
-      "Personaje: " +
+      "*Personaje:* " +
       listaActual[i].personaje +
       "\n" +
-      "Escala: " +
+      "*Escala:* " +
       listaActual[i].escala +
       "\n" +
-      "Peso: " +
+      "*Peso:* " +
       listaActual[i].peso +
       "\n" +
-      "Material: " +
+      "*Material:* " +
       listaActual[i].material +
       "\n" +
-      "Stock: " +
+      "*Stock:* " +
       listaActual[i].stock
   );
-}
+};
 //#################################################
 
 function cargarTarjetas(tarjetas) {
