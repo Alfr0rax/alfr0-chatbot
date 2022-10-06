@@ -552,7 +552,7 @@ function VerInformacion() {
 
 function cargarTarjetas(tarjetas) {
   let productos = cargarProductos();
-  console.log(productos);
+  console.log(productos[0].img[1]);
   for (let i = 0; i < 5; i++) {
     tarjetas.push({
       title: productos.name,
