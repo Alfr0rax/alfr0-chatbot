@@ -15,6 +15,7 @@ async function handleDialogFlowAction(
   contexts,
   parameters
 ) {
+  let select = "";
   switch (action) {
     case "03.2.BuscarPersonaje-Serie":
       buscarPersonajeSerie(sender, action, messages, contexts, parameters);
@@ -24,10 +25,10 @@ async function handleDialogFlowAction(
       sendTextMessage(sender, "y");
       break;
     case "05.Carrusel_Imagenes":
-      carruselImagenes(sender);
+      carruselImagenes(sender, select);
       break;
     case "07.Ver_Informacion":
-      VerInformacion();
+      //VerInformacion();
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
@@ -402,9 +403,9 @@ function buscarPersonajeSerie(sender, action, messages, contexts, parameters) {
     parameters
   );
 }
-function carruselImagenes(sender) {
+function carruselImagenes(sender, select) {
   let tarjetas = [];
-  cargarTarjetas(tarjetas);
+  cargarTarjetas(tarjetas, select);
   sendGenericMessage(sender, tarjetas);
 }
 function VerInformacion() {
@@ -412,8 +413,9 @@ function VerInformacion() {
 }
 //#################################################
 
-function cargarTarjetas(tarjetas) {
+function cargarTarjetas(tarjetas, select) {
   let productos = cargarProductos();
+  let a = 1;
   productos.forEach((producto) => {
     tarjetas.push({
       title: producto.name,
@@ -422,7 +424,7 @@ function cargarTarjetas(tarjetas) {
       buttons: [
         {
           type: "postback",
-          title: "Ver Información",
+          title: "Ver Información " + a,
           payload: "Ver Información",
         },
         {
@@ -437,6 +439,8 @@ function cargarTarjetas(tarjetas) {
         },
       ],
     });
+
+    a = a + 1;
   });
 }
 function cargarProductos() {
