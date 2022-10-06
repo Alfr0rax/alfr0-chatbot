@@ -17,14 +17,14 @@ async function handleDialogFlowAction(
 ) {
   switch (action) {
     case "03.2.BuscarPersonaje-Serie":
-      buscarPersonajeSerie();
+      buscarPersonajeSerie(sender, action, messages, contexts, parameters);
       break;
     case "04.Ubicación":
       sendTextMessage(sender, "x");
       sendTextMessage(sender, "y");
       break;
     case "05.Carrusel_Imagenes":
-      carruselImagenes();
+      carruselImagenes(sender);
       break;
 
     default:
@@ -400,7 +400,7 @@ function buscarPersonajeSerie() {
     parameters
   );
 }
-function carruselImagenes() {
+function carruselImagenes(sender) {
   let tarjetas = [];
   cargarTarjetas(tarjetas);
   sendGenericMessage(sender, tarjetas);
