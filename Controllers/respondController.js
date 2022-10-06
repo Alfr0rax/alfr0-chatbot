@@ -413,6 +413,11 @@ function cargarTarjetas(tarjetas) {
           title: "Ver más",
           payload: "Ver más",
         },
+        {
+          type: "postback",
+          title: "Finalizar Compra",
+          payload: "Finalizar Compra",
+        },
       ],
     });
   });
