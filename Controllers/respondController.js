@@ -16,15 +16,24 @@ async function handleDialogFlowAction(
   parameters
 ) {
   switch (action) {
+    case "03.2.BuscarPersonaje-Serie":
+      handleMessages(messages, sender);
+      handleDialogFlowAction(
+        sender,
+        "05.Carrusel_Imagenes",
+        messages,
+        contexts,
+        parameters
+      );
+      break;
     case "04.Ubicación":
       sendTextMessage(sender, "x");
       sendTextMessage(sender, "y");
       break;
     case "05.Carrusel_Imagenes":
-      handleMessages(messages, sender);
+      //handleMessages(messages, sender);
       let tarjetas = [];
       cargarTarjetas(tarjetas);
-      console.log(tarjetas);
       sendGenericMessage(sender, tarjetas);
       break;
 
