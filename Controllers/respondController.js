@@ -206,7 +206,7 @@ async function handleDialogFlowAction(
     case "07.Ver_Informacion":
       VerInformacion(sender, index);
       break;
-    case "":
+    case "08.Atrás":
       atras(sender, action, messages, contexts, parameters);
       break;
     default:
