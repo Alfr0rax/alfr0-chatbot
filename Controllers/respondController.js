@@ -20,6 +20,11 @@ async function handleDialogFlowAction(
             sendTextMessage(sender,"x");
             sendTextMessage(sender,"y");
         break;
+        case "05.Carrusel_Imagenes":
+            let tarjetas = cargarTarjetas();
+            sendGenericMessage(sender,tarjetas);
+        break;
+
 
 
 
@@ -380,6 +385,27 @@ async function handleMessage(message, sender) {
   
     return obj != null;
   }
+
+
+
+
+
+function cargarTarjetas(){
+  let productos = cargarProductos(); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = {
     sendToDialogFlow,
