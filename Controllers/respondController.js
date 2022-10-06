@@ -204,7 +204,7 @@ async function handleDialogFlowAction(
       carruselImagenes(sender);
       break;
     case "07.Ver_Informacion":
-      VerInformacion(sender, index);
+      await VerInformacion(sender, index);
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
