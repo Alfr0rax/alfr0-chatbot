@@ -427,7 +427,7 @@ function cargarTarjetas(tarjetas) {
         {
           type: "postback",
           title: "Ver Información",
-          payload: "asdfasdgavraerbasdfgher",
+          payload: "07.Ver_Informacion",
         },
         {
           type: "postback",
