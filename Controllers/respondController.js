@@ -629,7 +629,13 @@ async function VerInformacion(sender, i) {
 }
 function atras(sender, action, messages, contexts, parameters) {
   n -= 5;
-  handleDialogFlowAction(sender, action, messages, contexts, parameters);
+  handleDialogFlowAction(
+    sender,
+    action,
+    "05.Carrusel_Imagenes",
+    contexts,
+    parameters
+  );
 }
 //#################################################
 
