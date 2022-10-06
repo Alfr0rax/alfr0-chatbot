@@ -141,7 +141,7 @@ async function receivedPostback(event) {
       break;
     default:
       //unindentified payload
-      respond.sendToDialogFlow(senderId, payload);
+      respond.sendToDialogFlow(senderId, payload[0]);
       break;
   }
 
