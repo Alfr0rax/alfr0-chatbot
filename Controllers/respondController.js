@@ -26,7 +26,7 @@ async function handleDialogFlowAction(
       sendTextMessage(sender, "y");
       break;
     case "05.Carrusel_Imagenes":
-      carruselImagenes(sender, select);
+      carruselImagenes(sender);
       break;
     case "07.Ver_Informacion":
       //VerInformacion();
@@ -404,9 +404,9 @@ function buscarPersonajeSerie(sender, action, messages, contexts, parameters) {
     parameters
   );
 }
-function carruselImagenes(sender, select) {
+function carruselImagenes(sender) {
   let tarjetas = [];
-  cargarTarjetas(tarjetas, select);
+  cargarTarjetas(tarjetas);
   sendGenericMessage(sender, tarjetas);
 }
 function VerInformacion() {
@@ -414,7 +414,7 @@ function VerInformacion() {
 }
 //#################################################
 
-function cargarTarjetas(tarjetas, select) {
+function cargarTarjetas(tarjetas) {
   let productos = cargarProductos();
   let a = 1;
   productos.forEach((producto) => {
