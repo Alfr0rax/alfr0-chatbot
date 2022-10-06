@@ -390,7 +390,7 @@ function isDefined(obj) {
 }
 
 //#################### Actions ####################
-function buscarPersonajeSerie() {
+function buscarPersonajeSerie(sender, action, messages, contexts, parameters) {
   handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
