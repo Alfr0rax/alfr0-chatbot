@@ -21,7 +21,8 @@ async function handleDialogFlowAction(
       sendTextMessage(sender, "y");
       break;
     case "05.Carrusel_Imagenes":
-      let tarjetas = cargarTarjetas();
+      let tarjetas = [];
+      cargarTarjetas(tarjetas);
       sendGenericMessage(sender, tarjetas);
       break;
 
@@ -387,9 +388,8 @@ function isDefined(obj) {
   return obj != null;
 }
 
-function cargarTarjetas() {
+function cargarTarjetas(tarjetas) {
   let productos = cargarProductos();
-  let tarjetas = [];
   productos.forEach((producto) => {
     tarjetas.push({
       title: producto.name,
