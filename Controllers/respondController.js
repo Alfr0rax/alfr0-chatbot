@@ -408,16 +408,6 @@ function cargarTarjetas(tarjetas) {
           title: "Ver Información",
           payload: "Ver Información",
         },
-        {
-          type: "postback",
-          title: "Ver más",
-          payload: "Ver más",
-        },
-        {
-          type: "postback",
-          title: "Finalizar Compra",
-          payload: "Finalizar Compra",
-        },
       ],
     });
   });
