@@ -592,8 +592,12 @@ function cargarProductos() {
   return p;
 }
 
+function setIndex(x) {
+  index = x;
+}
+
 module.exports = {
   sendToDialogFlow,
   sendTextMessage,
-  index,
+  setIndex,
 };
