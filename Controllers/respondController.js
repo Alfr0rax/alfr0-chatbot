@@ -582,45 +582,47 @@ async function VerInformacion(sender, i) {
   listaActual[i].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
-  await sendTextMessage(
-    sender,
-    "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
-  );
-  await sendTextMessage(
-    sender,
-    "*Precio:* " +
-      listaActual[i].precio +
-      " USD\n" +
-      "*Serie:* " +
-      listaActual[i].serie +
-      "\n" +
-      "*Personaje:* " +
-      listaActual[i].personaje +
-      "\n" +
-      "*Escala:* " +
-      listaActual[i].escala +
-      "\n" +
-      "*Peso:* " +
-      listaActual[i].peso +
-      "\n" +
-      "*Material:* " +
-      listaActual[i].material +
-      "\n" +
-      "*Stock:* " +
-      listaActual[i].stock
-  );
-  await sendButtonMessage(sender, "Acciones", [
-    {
-      type: "postback",
-      title: "Añadir Pedido",
-      payload: "Añadir Pedido",
-    },
-    {
-      type: "postback",
-      title: "Atrás",
-      payload: "Atrás",
-    },
-  ]);
+  setTimeout(() => {
+    sendTextMessage(
+      sender,
+      "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
+    );
+    sendTextMessage(
+      sender,
+      "*Precio:* " +
+        listaActual[i].precio +
+        " USD\n" +
+        "*Serie:* " +
+        listaActual[i].serie +
+        "\n" +
+        "*Personaje:* " +
+        listaActual[i].personaje +
+        "\n" +
+        "*Escala:* " +
+        listaActual[i].escala +
+        "\n" +
+        "*Peso:* " +
+        listaActual[i].peso +
+        "\n" +
+        "*Material:* " +
+        listaActual[i].material +
+        "\n" +
+        "*Stock:* " +
+        listaActual[i].stock
+    );
+    sendButtonMessage(sender, "Acciones", [
+      {
+        type: "postback",
+        title: "Añadir Pedido",
+        payload: "Añadir Pedido",
+      },
+      {
+        type: "postback",
+        title: "Atrás",
+        payload: "Atrás",
+      },
+    ]);
+  }, 2000);
 }
 //#################################################
 
