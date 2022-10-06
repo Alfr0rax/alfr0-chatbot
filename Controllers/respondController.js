@@ -30,6 +30,7 @@ async function handleDialogFlowAction(
       break;
     case "07.Ver_Informacion":
       //VerInformacion();
+      handleMessages(messages, sender);
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
@@ -410,7 +411,7 @@ function carruselImagenes(sender) {
   sendGenericMessage(sender, tarjetas);
 }
 function VerInformacion() {
-  sendImageMessage(sender);
+  //sendImageMessage(sender);
 }
 //#################################################
 
@@ -421,7 +422,7 @@ function cargarTarjetas(tarjetas) {
     tarjetas.push({
       title: producto.name,
       image_url: producto.img[0],
-      subtitle: "Precio: *" + producto.precio + " USD*",
+      subtitle: " " + producto.precio + " USD",
       buttons: [
         {
           type: "postback",
