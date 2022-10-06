@@ -135,13 +135,13 @@ async function receivedPostback(event) {
   var timeOfPostback = event.timestamp;
 
   var payload = event.postback.payload;
-  switch (payload[0]) {
+  switch (payload.text) {
     case "Ver Información":
-      respond.sendToDialogFlow(senderId, payload[1]);
+      respond.sendToDialogFlow(senderId, payload.id);
       break;
     default:
       //unindentified payload
-      respond.sendToDialogFlow(senderId, payload[0]);
+      respond.sendToDialogFlow(senderId, payload.text);
       break;
   }
 

@@ -426,17 +426,26 @@ function cargarTarjetas(tarjetas, select) {
         {
           type: "postback",
           title: "Ver Información " + a,
-          payload: ["Ver Información", "producto.id"],
+          payload: {
+            text: "Ver Información",
+            id: "producto.id",
+          },
         },
         {
           type: "postback",
           title: "Ver más",
-          payload: ["Ver más"],
+          payload: {
+            text: "Ver más",
+            id: "producto.id",
+          },
         },
         {
           type: "postback",
           title: "Finalizar Compra",
-          payload: ["Finalizar Compra"],
+          payload: {
+            text: "Finalizar Compra",
+            id: "producto.id",
+          },
         },
       ],
     });
