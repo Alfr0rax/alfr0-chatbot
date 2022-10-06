@@ -546,7 +546,7 @@ function carruselImagenes(sender) {
   sendGenericMessage(sender, tarjetas);
 }
 function VerInformacion(sender, i) {
-  todosproductos[5 - n + i].img.forEach((imagen) => {
+  listaActual.img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
 }
