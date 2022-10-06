@@ -396,13 +396,8 @@ function cargarTarjetas(tarjetas) {
     tarjetas.push({
       title: producto.name,
       image_url: producto.img,
-      subtitle: producto.serie,
+      subtitle: "Precio: " + producto.precio + " USD",
       buttons: [
-        {
-          type: "postback",
-          title: "Añadir Pedido",
-          payload: "Añadir Pedido",
-        },
         {
           type: "postback",
           title: "Ver Información",
@@ -428,7 +423,7 @@ function cargarProductos() {
     {
       id: 01,
       name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      pecio: 45,
+      precio: 45,
       serie: "Sword Art Online",
       personaje: "Kirito",
       img: "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
@@ -436,7 +431,7 @@ function cargarProductos() {
     {
       id: 02,
       name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
-      pecio: 45,
+      precio: 45,
       serie: "Sword Art Online",
       personaje: "Asuna",
       img: "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
