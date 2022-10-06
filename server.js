@@ -20,7 +20,7 @@ app.use(
 );
 
 mongoose.connect(
-  "mongodb+srv://alfr0rax:alfr0-chatbot@dialogflowcluster.itl1srr.mongodb.net/?retryWrites=true&w=majority",
+  "mongodb+srv://alfr0rax:alfr0-chatbot@dialogflowcluster.itl1srr.mongodb.net/chatbotDB?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,

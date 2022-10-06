@@ -116,17 +116,43 @@ async function receivedMessage(event) {
     handleMessageAttachments(messageAttachments, senderId);
   }
 }
-function saveUserData(facebookID) {
+
+async function saveUserData(facebookID) {
+  let userData = await getUserData(facebookID);
   let chatUser = new Users({
-    firstName: "",
-    lastName: "",
+    firstName: userData.first_name,
+    lastName: userData.last_name,
     facebookId: facebookID,
-    email: "",
+    email: userData.email,
   });
   chatUser.save((err, res) => {
     if (err) return console.log(err);
     console.log("Se creó un Usuario: ", res);
   });
+}
+
+async function getUserData(senderId) {
+  console.log("consiguiendo datos del usuario...");
+  let access_token = config.FB_PAGE_TOKEN;
+  try {
+    let userData = await axios.get(
+      "https://graph.facebook.com/v6.0/" + senderId,
+      {
+        params: {
+          access_token,
+        },
+      }
+    );
+    return userData.data;
+  } catch (err) {
+    console.log("algo salio mal en axios getUserData: ", err);
+    return {
+      first_name: "",
+      last_name: "",
+      profile_pic: "",
+      email: "",
+    };
+  }
 }
 
 function handleMessageAttachments(messageAttachments, senderId) {
