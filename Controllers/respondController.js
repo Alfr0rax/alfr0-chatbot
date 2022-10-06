@@ -15,7 +15,8 @@ async function handleDialogFlowAction(
   contexts,
   parameters
 ) {
-  let select = "";
+  let idsel = 0;
+
   switch (action) {
     case "03.2.BuscarPersonaje-Serie":
       buscarPersonajeSerie(sender, action, messages, contexts, parameters);
@@ -425,7 +426,10 @@ function cargarTarjetas(tarjetas, select) {
         {
           type: "postback",
           title: "Ver Información " + a,
-          payload: "Ver Información" + a,
+          payload: function a() {
+            a = a + 10;
+            return "Ver Información" + a;
+          },
         },
         {
           type: "postback",
@@ -445,7 +449,7 @@ function cargarTarjetas(tarjetas, select) {
 function cargarProductos() {
   return [
     {
-      id: 01,
+      id: 1,
       name: "Sword Art Online Nendoroid Swacchao! KIRITO",
       precio: 45,
       serie: "Sword Art Online",
@@ -458,7 +462,7 @@ function cargarProductos() {
       ],
     },
     {
-      id: 02,
+      id: 2,
       name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
       precio: 45,
       serie: "Sword Art Online",
