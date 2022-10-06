@@ -584,7 +584,7 @@ function cargarProductos() {
     p.push(todosproductos[i + n]);
     n++;
   }
-  return;
+  return p;
 }
 
 module.exports = {
