@@ -579,14 +579,14 @@ function carruselImagenes(sender) {
   sendGenericMessage(sender, tarjetas);
 }
 async function VerInformacion(sender, i) {
-  listaActual[i].img.forEach((imagen) => {
+  await listaActual[i].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
   await sendTextMessage(
     sender,
     "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
   );
-  sendTextMessage(
+  await sendTextMessage(
     sender,
     "*Precio:* " +
       listaActual[i].precio +
