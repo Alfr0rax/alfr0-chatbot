@@ -408,6 +408,11 @@ function cargarTarjetas(tarjetas) {
           title: "Ver Información",
           payload: "Ver Información",
         },
+        {
+          type: "postback",
+          title: "Ver más",
+          payload: "Ver más",
+        },
       ],
     });
   });
