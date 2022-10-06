@@ -17,8 +17,8 @@ async function handleDialogFlowAction(
   ) {
     switch (action) {
         case "04.Ubicación":
-            sendTextMessage(sender,"Sos un hijo de la remil *****");
-            sendTextMessage(sender,"y vete a chingar a tu madre");
+            sendTextMessage(sender,"x");
+            sendTextMessage(sender,"y");
         break;
 
 
