@@ -7,6 +7,9 @@ const dialogflow = require("./dialogflowController");
 const { structProtoToJson } = require("../Tools/structFunctions");
 
 const sessionIds = new Map();
+let n = 0; //puntero
+let index = 99;
+let lista = [];
 
 async function handleDialogFlowAction(
   sender,
@@ -19,6 +22,7 @@ async function handleDialogFlowAction(
 
   switch (action) {
     case "03.2.BuscarPersonaje-Serie":
+      n = 0;
       buscarPersonajeSerie(sender, action, messages, contexts, parameters);
       break;
     case "04.Ubicación":
@@ -417,18 +421,16 @@ function VerInformacion() {
 
 function cargarTarjetas(tarjetas) {
   let productos = cargarProductos();
-  let a = 1;
-  productos.forEach((producto) => {
+  for (let i = 0; i < 5; i++) {
     tarjetas.push({
-      title: producto.name,
-      image_url: producto.img[0],
-      subtitle: " " + producto.precio + " USD",
+      title: productos.name,
+      image_url: productos.img[0],
+      subtitle: " " + productos.precio + " USD",
       buttons: [
         {
           type: "postback",
           title: "Ver Información",
-          payload: "Ver Información",
-          id: producto.id,
+          payload: "Ver Información" + i,
         },
         {
           type: "postback",
@@ -442,144 +444,152 @@ function cargarTarjetas(tarjetas) {
         },
       ],
     });
-  });
+  }
 }
+let todosproductos = [
+  {
+    id: 10,
+    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Kirito",
+    img: [
+      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+    ],
+  },
+  {
+    id: 20,
+    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Asuna",
+    img: [
+      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+    ],
+  },
+  {
+    id: 30,
+    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Kirito",
+    img: [
+      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+    ],
+  },
+  {
+    id: 40,
+    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Asuna",
+    img: [
+      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+    ],
+  },
+  {
+    id: 50,
+    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Kirito",
+    img: [
+      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+    ],
+  },
+  {
+    id: 60,
+    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Asuna",
+    img: [
+      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+    ],
+  },
+  {
+    id: 70,
+    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Kirito",
+    img: [
+      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+    ],
+  },
+  {
+    id: 80,
+    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Asuna",
+    img: [
+      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+    ],
+  },
+  {
+    id: 90,
+    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Kirito",
+    img: [
+      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
+    ],
+  },
+  {
+    id: 100,
+    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
+    precio: 45,
+    serie: "Sword Art Online",
+    personaje: "Asuna",
+    img: [
+      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
+    ],
+  },
+];
+
 function cargarProductos() {
-  return [
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 20,
-      name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Asuna",
-      img: [
-        "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-        "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-        "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-        "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-    {
-      id: 10,
-      name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-      precio: 45,
-      serie: "Sword Art Online",
-      personaje: "Kirito",
-      img: [
-        "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-        "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      ],
-    },
-  ];
+  let p = [];
+  for (let i = 0; i < 5; i++) {
+    p.push(todosproductos[i + n]);
+    n++;
+  }
+  return;
 }
 
 module.exports = {
   sendToDialogFlow,
   sendTextMessage,
+  index,
 };

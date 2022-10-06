@@ -136,8 +136,20 @@ async function receivedPostback(event) {
 
   var payload = event.postback.payload;
   switch (payload) {
-    case "Ver Información":
-      console.log(payload);
+    case "Ver Información0":
+      respond.index = 0;
+      respond.sendToDialogFlow(senderId, payload);
+      break;
+    case "Ver Información1":
+      respond.sendToDialogFlow(senderId, payload);
+      break;
+    case "Ver Información2":
+      respond.sendToDialogFlow(senderId, payload);
+      break;
+    case "Ver Información3":
+      respond.sendToDialogFlow(senderId, payload);
+      break;
+    case "Ver Información4":
       respond.sendToDialogFlow(senderId, payload);
       break;
     default:
