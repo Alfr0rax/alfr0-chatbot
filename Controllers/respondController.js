@@ -552,6 +552,7 @@ function VerInformacion() {
 
 function cargarTarjetas(tarjetas) {
   let productos = cargarProductos();
+  console.log(productos);
   for (let i = 0; i < 5; i++) {
     tarjetas.push({
       title: productos.name,
