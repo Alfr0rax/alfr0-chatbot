@@ -606,9 +606,6 @@ async function VerInformacion(sender, i) {
       "*Stock:* " +
       listaActual[i].stock
   );
-  await listaActual[i].img.forEach((imagen) => {
-    sendImageMessage(sender, imagen);
-  });
   await sendButtonMessage(sender, "Acciones", [
     {
       type: "postback",
@@ -621,6 +618,10 @@ async function VerInformacion(sender, i) {
       payload: "Atrás",
     },
   ]);
+
+  await listaActual[i].img.forEach((imagen) => {
+    sendImageMessage(sender, imagen);
+  });
 }
 //#################################################
 
