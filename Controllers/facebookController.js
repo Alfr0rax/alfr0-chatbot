@@ -4,7 +4,7 @@ const router = express.Router();
 
 //files
 const config = require("../config");
-const respond = require('./respondController');
+const respond = require("./respondController");
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -41,7 +41,7 @@ router.get("/webhook/", function (req, res) {
     res.sendStatus(403);
   }
 });
-  
+
 //for webhook facebook
 router.post("/webhook/", function (req, res) {
   var data = req.body;
@@ -135,7 +135,10 @@ async function receivedPostback(event) {
   var timeOfPostback = event.timestamp;
 
   var payload = event.postback.payload;
-  switch (payload) {
+  switch (payload[0]) {
+    case "Ver Información":
+      respond.sendToDialogFlow(senderId, payload[1]);
+      break;
     default:
       //unindentified payload
       respond.sendToDialogFlow(senderId, payload);
