@@ -137,7 +137,9 @@ async function receivedPostback(event) {
   var payload = event.postback.payload;
   switch (payload) {
     case "Ver Información":
-      respond.sendToDialogFlow(senderId, "payload");
+      console.log(
+        "aaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+      );
       break;
     default:
       //unindentified payload
