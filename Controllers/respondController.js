@@ -164,8 +164,8 @@ async function handleDialogFlowAction(
       carruselImagenes(sender);
       break;
     case "07.Ver_Informacion":
-      //VerInformacion();
       handleMessages(messages, sender);
+      VerInformacion(sender, index);
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
@@ -545,8 +545,10 @@ function carruselImagenes(sender) {
   cargarTarjetas(tarjetas);
   sendGenericMessage(sender, tarjetas);
 }
-function VerInformacion() {
-  //sendImageMessage(sender);
+function VerInformacion(sender, i) {
+  todosproductos[5 - n + i].img.forEach((imagen) => {
+    sendImageMessage(sender, imagen);
+  });
 }
 //#################################################
 
@@ -582,8 +584,8 @@ function cargarProductos() {
   let p = [];
   for (let i = 0; i < 5; i++) {
     p.push(todosproductos[i + n]);
-    n++;
   }
+  n += 5;
   return p;
 }
 
