@@ -118,7 +118,7 @@ function handleMessageAttachments(messageAttachments, senderId) {
 }
 
 async function handleQuickReply(senderId, quickReply, messageId) {
-  let quickReplyPayload = quickReply.payload;
+  let quickReplyPayload = quickReply.payload.text;
   console.log(
     "Quick reply for message %s with payload %s",
     messageId,
