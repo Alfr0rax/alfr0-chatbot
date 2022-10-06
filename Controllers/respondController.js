@@ -609,7 +609,7 @@ async function VerInformacion(sender, i) {
   await listaActual[i].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
-  await sendButtonMessage(sender, " ", [
+  await sendButtonMessage(sender, "Acciones", [
     {
       type: "postback",
       title: "Añadir Pedido",
