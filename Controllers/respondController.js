@@ -428,6 +428,7 @@ function cargarTarjetas(tarjetas) {
           type: "postback",
           title: "Ver Información",
           payload: "Ver Información",
+          id: producto.id,
         },
         {
           type: "postback",
