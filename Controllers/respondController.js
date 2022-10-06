@@ -426,7 +426,7 @@ function cargarTarjetas(tarjetas, select) {
         {
           type: "postback",
           title: "Ver Información " + a,
-          payload: ["Ver Información", producto.id],
+          payload: ["Ver Información", "producto.id"],
         },
         {
           type: "postback",
