@@ -118,7 +118,7 @@ function handleMessageAttachments(messageAttachments, senderId) {
 }
 
 async function handleQuickReply(senderId, quickReply, messageId) {
-  let quickReplyPayload = quickReply.payload[0];
+  let quickReplyPayload = quickReply.payload;
   console.log(
     "Quick reply for message %s with payload %s",
     messageId,
@@ -135,13 +135,13 @@ async function receivedPostback(event) {
   var timeOfPostback = event.timestamp;
 
   var payload = event.postback.payload;
-  switch (payload[0]) {
+  switch (payload) {
     case "Ver Información":
-      respond.sendToDialogFlow(senderId, payload[1]);
+      respond.sendToDialogFlow(senderId, payload);
       break;
     default:
       //unindentified payload
-      respond.sendToDialogFlow(senderId, payload[0]);
+      respond.sendToDialogFlow(senderId, payload);
       break;
   }
 
