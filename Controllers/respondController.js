@@ -9,7 +9,7 @@ const { structProtoToJson } = require("../Tools/structFunctions");
 const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
-let lista = [];
+let listaActual = [];
 let todosproductos = [
   {
     id: 10,
@@ -553,12 +553,13 @@ function VerInformacion(sender, i) {
 //#################################################
 
 function cargarTarjetas(tarjetas) {
-  let productos = cargarProductos();
+  listaActual = [];
+  listaActual = cargarProductos();
   for (let i = 0; i < 5; i++) {
     tarjetas.push({
-      title: productos[i].name,
-      image_url: productos[i].img[0],
-      subtitle: " " + productos[i].precio + " USD",
+      title: listaActual[i].name,
+      image_url: listaActual[i].img[0],
+      subtitle: " " + listaActual[i].precio + " USD",
       buttons: [
         {
           type: "postback",
