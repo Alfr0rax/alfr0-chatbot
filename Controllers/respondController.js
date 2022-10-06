@@ -17,24 +17,14 @@ async function handleDialogFlowAction(
 ) {
   switch (action) {
     case "03.2.BuscarPersonaje-Serie":
-      handleMessages(messages, sender);
-      handleDialogFlowAction(
-        sender,
-        "05.Carrusel_Imagenes",
-        messages,
-        contexts,
-        parameters
-      );
+      buscarPersonajeSerie();
       break;
     case "04.Ubicación":
       sendTextMessage(sender, "x");
       sendTextMessage(sender, "y");
       break;
     case "05.Carrusel_Imagenes":
-      //handleMessages(messages, sender);
-      let tarjetas = [];
-      cargarTarjetas(tarjetas);
-      sendGenericMessage(sender, tarjetas);
+      carruselImagenes();
       break;
 
     default:
@@ -397,6 +387,23 @@ function isDefined(obj) {
   }
 
   return obj != null;
+}
+
+//#################### Actions ####################
+function buscarPersonajeSerie() {
+  handleMessages(messages, sender);
+  handleDialogFlowAction(
+    sender,
+    "05.Carrusel_Imagenes",
+    messages,
+    contexts,
+    parameters
+  );
+}
+function carruselImagenes() {
+  let tarjetas = [];
+  cargarTarjetas(tarjetas);
+  sendGenericMessage(sender, tarjetas);
 }
 
 function cargarTarjetas(tarjetas) {
