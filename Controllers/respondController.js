@@ -446,7 +446,7 @@ function cargarTarjetas(tarjetas) {
 function cargarProductos() {
   return [
     {
-      id: 1,
+      id: 10,
       name: "Sword Art Online Nendoroid Swacchao! KIRITO",
       precio: 45,
       serie: "Sword Art Online",
@@ -459,7 +459,7 @@ function cargarProductos() {
       ],
     },
     {
-      id: 2,
+      id: 20,
       name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
       precio: 45,
       serie: "Sword Art Online",
