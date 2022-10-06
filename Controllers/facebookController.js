@@ -140,6 +140,7 @@ async function receivedPostback(event) {
       console.log(
         "aaaaaaaaaahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
       );
+      respond.sendToDialogFlow(senderId, payload);
       break;
     default:
       //unindentified payload
