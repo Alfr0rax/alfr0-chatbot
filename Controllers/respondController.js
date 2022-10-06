@@ -425,7 +425,7 @@ function cargarTarjetas(tarjetas, select) {
         {
           type: "postback",
           title: "Ver Información " + a,
-          payload: "Ver Información",
+          payload: "Ver Información" + a,
         },
         {
           type: "postback",
@@ -439,8 +439,6 @@ function cargarTarjetas(tarjetas, select) {
         },
       ],
     });
-
-    a = a + 1;
   });
 }
 function cargarProductos() {
