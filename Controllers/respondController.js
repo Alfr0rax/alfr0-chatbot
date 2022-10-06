@@ -582,7 +582,7 @@ async function VerInformacion(sender, i) {
   listaActual[i].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
-  setTimeout(() => {
+  await setTimeout(() => {
     sendTextMessage(
       sender,
       "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
@@ -622,7 +622,7 @@ async function VerInformacion(sender, i) {
         payload: "Atrás",
       },
     ]);
-  }, 2000);
+  }, 5000);
 }
 //#################################################
 
