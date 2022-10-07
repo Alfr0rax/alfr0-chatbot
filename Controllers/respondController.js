@@ -576,7 +576,7 @@ async function buscarPersonajeSerie(
   contexts,
   parameters
 ) {
-  let db = await Product.collection;
+  let db = await Product.find({});
   console.log("MOSTRANDO CONTENIDO DE LA BASE DE DATOS", db);
   handleMessages(messages, sender);
   handleDialogFlowAction(
