@@ -654,7 +654,7 @@ function atras(sender, action, messages, contexts, parameters) {
 
 async function verMas(sender, action, messages, contexts, parameters) {
   listaActual = [];
-  if (n <= todosproductos.length) {
+  if (n < todosproductos.length) {
     await handleMessages(messages, sender);
     await handleDialogFlowAction(
       sender,
