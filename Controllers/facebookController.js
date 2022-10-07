@@ -9,6 +9,7 @@ const respond = require("./respondController");
 //mongodb models
 const Users = require("../Models/Users");
 const { default: axios } = require("axios");
+const { findOne } = require("../Models/Users");
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -120,6 +121,8 @@ async function receivedMessage(event) {
 }
 
 async function saveUserData(facebookID) {
+  let isRegistered = await findOne({ facebookId: facebookID });
+  if (isRegistered) return;
   let userData = await getUserData(facebookID);
   let chatUser = new Users({
     firstName: userData.first_name,
