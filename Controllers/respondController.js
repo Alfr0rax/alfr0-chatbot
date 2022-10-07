@@ -13,7 +13,7 @@ const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
 let listaActual = [];
-let todosproductos = /*productosDB();*/ [
+let todosproductos = await Product.find({}); /*[
   {
     id: 10,
     name: "Sword Art Online Nendoroid Swacchao! KIRITO",
@@ -184,7 +184,7 @@ let todosproductos = /*productosDB();*/ [
       "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
     ],
   },
-];
+];*/
 async function handleDialogFlowAction(
   sender,
   action,
@@ -569,15 +569,7 @@ function isDefined(obj) {
 }
 
 //#################### Actions ####################
-async function buscarPersonajeSerie(
-  sender,
-  action,
-  messages,
-  contexts,
-  parameters
-) {
-  let db = await Product.find({});
-  console.log("MOSTRANDO CONTENIDO DE LA BASE DE DATOS", db);
+function buscarPersonajeSerie(sender, action, messages, contexts, parameters) {
   handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
