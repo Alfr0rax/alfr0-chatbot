@@ -654,7 +654,7 @@ function atras(sender, action, messages, contexts, parameters) {
 
 async function verMas(sender, action, messages, contexts, parameters) {
   listaActual = [];
-  handleMessages(messages, sender);
+  await handleMessages(messages, sender);
   await handleDialogFlowAction(
     sender,
     "05.Carrusel_Imagenes",
@@ -697,6 +697,7 @@ function cargarTarjetas(tarjetas) {
 }
 function cargarListaProductos() {
   let i = 0;
+  console.log("!!!!!! REVICION ¡¡¡¡¡¡¡¡", todosproductos.length);
   while (i < cantMostrar && i + n <= todosproductos.length) {
     listaActual.push(todosproductos[i + n]);
     i++;
