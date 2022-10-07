@@ -329,7 +329,6 @@ async function verMas(sender, action, messages, contexts, parameters) {
 
 function cargarTarjetas(tarjetas) {
   cargarListaProductos();
-  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", listaActual);
   let i = 0;
   listaActual.forEach((element) => {
     tarjetas.push({
@@ -372,7 +371,9 @@ function setIndex(x) {
 async function obtenerinfo(index) {
   let name = listaActual[index].name;
   let db = await InfoProduct.find({ name });
-  return db.img;
+  let l = db.img;
+  console.log("!!!!!! REVISION 00002 ¡¡¡¡¡¡¡¡", l);
+  return l;
 }
 
 //########################################################
