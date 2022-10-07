@@ -12,6 +12,7 @@ const Product = require("../Models/Products");
 const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
+let cantMostrar = 5;
 let listaActual = [];
 let todosproductos = []; /*[
   {
@@ -667,7 +668,6 @@ async function verMas(sender, action, messages, contexts, parameters) {
 
 function cargarTarjetas(tarjetas) {
   cargarListaProductos();
-  console.log("LISTA DE PRODUCTOS", listaActual);
   let i = 0;
   listaActual.forEach((element) => {
     tarjetas.push({
@@ -696,10 +696,12 @@ function cargarTarjetas(tarjetas) {
   });
 }
 function cargarListaProductos() {
-  for (let i = 0; i < 5 && n < todosproductos.length; i++) {
+  let i = 0;
+  while (i < cantMostrar && i + n <= todosproductos.length()) {
     listaActual.push(todosproductos[i + n]);
-    n++;
+    i++;
   }
+  n += i;
 }
 function setIndex(x) {
   index = x;
