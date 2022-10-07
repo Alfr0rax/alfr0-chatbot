@@ -251,7 +251,7 @@ async function VerInformacion(sender, index) {
   let linfo = await obtenerinfo(index);
   console.log("!!!!!! REVISION FINAL ¡¡¡¡¡¡¡¡", linfo);
   sendTextMessage(sender, "Terminamos");
-  /*listaActual[index].img.forEach((imagen) => {
+  linfo.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
   await setTimeout(() => {
@@ -294,7 +294,7 @@ async function VerInformacion(sender, index) {
         payload: "Atrás",
       },
     ]);
-  }, 4000);*/
+  }, 4000);
 }
 function atras(sender, action, messages, contexts, parameters) {
   handleDialogFlowAction(
@@ -371,9 +371,7 @@ function setIndex(x) {
 async function obtenerinfo(index) {
   let name = listaActual[index].name;
   let db = await InfoProduct.find({ name });
-  let l = db[0].img;
-  //console.log("!!!!!! REVISION 00002 ¡¡¡¡¡¡¡¡");
-  return l;
+  return db[0].img;
 }
 
 //########################################################
