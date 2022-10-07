@@ -13,7 +13,7 @@ const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
 let listaActual = [];
-let todosproductos = Product.find({}); /*[
+let todosproductos = productosDB(); /*[
   {
     id: 10,
     name: "Sword Art Online Nendoroid Swacchao! KIRITO",
@@ -570,7 +570,6 @@ function isDefined(obj) {
 
 //#################### Actions ####################
 function buscarPersonajeSerie(sender, action, messages, contexts, parameters) {
-  console.log("MOSTRANDO MI LISTA", todosproductos);
   handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
@@ -681,8 +680,8 @@ function cargarProductos() {
 }
 
 async function productosDB() {
-  let p = [];
-  return p;
+  let db = await Product.find({});
+  return db;
 }
 function setIndex(x) {
   index = x;
