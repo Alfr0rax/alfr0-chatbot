@@ -692,7 +692,6 @@ function cargarTarjetas(tarjetas) {
         },
       ],
     });
-    i++;
   });
 }
 function cargarListaProductos() {
