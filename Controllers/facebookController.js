@@ -108,6 +108,7 @@ async function receivedMessage(event) {
   }
 
   saveUserData(senderId);
+
   if (messageText) {
     //send message to dialogflow
     console.log("MENSAJE DEL USUARIO: ", messageText);
@@ -123,7 +124,6 @@ async function saveUserData(facebookID) {
     firstName: userData.first_name,
     lastName: userData.last_name,
     facebookId: facebookID,
-    email: userData.email,
   });
   chatUser.save((err, res) => {
     if (err) return console.log(err);
