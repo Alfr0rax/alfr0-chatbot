@@ -212,6 +212,9 @@ async function handleDialogFlowAction(
     case "08.Atras":
       atras(sender, action, messages, contexts, parameters);
       break;
+    case "10.Ver_Mas":
+      verMas(sender, action, messages, contexts, parameters);
+      break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
       handleMessages(messages, sender);
@@ -648,12 +651,22 @@ function atras(sender, action, messages, contexts, parameters) {
     parameters
   );
 }
+function verMas(sender, action, messages, contexts, parameters) {
+  handleDialogFlowAction(
+    sender,
+    "05.Carrusel_Imagenes",
+    messages,
+    contexts,
+    parameters
+  );
+}
+
 //#################################################
 
 function cargarTarjetas(tarjetas) {
   listaActual = [];
   listaActual = cargarProductos();
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5 && n <= todosproductos.length; i++) {
     tarjetas.push({
       title: listaActual[i].name,
       image_url: listaActual[i].img,
@@ -680,7 +693,7 @@ function cargarTarjetas(tarjetas) {
 }
 function cargarProductos() {
   let p = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 5 && n <= todosproductos.length; i++) {
     p.push(todosproductos[i + n]);
   }
   n += 5;
