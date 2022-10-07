@@ -143,6 +143,8 @@ async function getUserData(senderId) {
         },
       }
     );
+    console.log("¡¡¡¡¡¡¡¡¡¡¡¡¡DATOS DEL USUARIO!!!!!!!!!!!!!");
+    console.log(userData.data);
     return userData.data;
   } catch (err) {
     console.log("algo salio mal en axios getUserData: ", err);
@@ -150,7 +152,6 @@ async function getUserData(senderId) {
       first_name: "",
       last_name: "",
       profile_pic: "",
-      email: "",
     };
   }
 }
