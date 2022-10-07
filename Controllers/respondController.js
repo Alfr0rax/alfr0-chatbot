@@ -668,7 +668,7 @@ async function verMas(sender, action, messages, contexts, parameters) {
 
 function cargarTarjetas(tarjetas) {
   cargarListaProductos();
-  let i = 0;
+  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", listaActual);
   listaActual.forEach((element) => {
     tarjetas.push({
       title: element.name,
@@ -678,7 +678,7 @@ function cargarTarjetas(tarjetas) {
         {
           type: "postback",
           title: "Ver Información",
-          payload: "Ver Información" + i,
+          payload: "Ver Información",
         },
         {
           type: "postback",
@@ -697,7 +697,7 @@ function cargarTarjetas(tarjetas) {
 }
 function cargarListaProductos() {
   let i = 0;
-  console.log("!!!!!! REVICION ¡¡¡¡¡¡¡¡", todosproductos.length);
+  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", todosproductos.length, n);
   while (i < cantMostrar && i + n <= todosproductos.length) {
     listaActual.push(todosproductos[i + n]);
     i++;
