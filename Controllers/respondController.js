@@ -295,6 +295,11 @@ async function VerInformacion(sender, index) {
   }, 4000);
 }
 function atras(sender, action, messages, contexts, parameters) {
+  if (n % 5 == 0) {
+    n -= 5;
+  } else {
+    n -= n % 5;
+  }
   handleDialogFlowAction(
     sender,
     "05.Carrusel_Imagenes",
