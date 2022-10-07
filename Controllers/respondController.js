@@ -670,6 +670,7 @@ function cargarTarjetas(tarjetas) {
   cargarListaProductos();
   let i = 0;
   listaActual.forEach((element) => {
+    console.log("VIENDO ELEMENT", element);
     tarjetas.push({
       title: element[i].name,
       image_url: element[i].img,
