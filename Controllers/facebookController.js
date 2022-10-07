@@ -122,7 +122,7 @@ async function receivedMessage(event) {
 
 async function saveUserData(facebookID) {
   let isRegistered = await Users.findOne({ facebookId: facebookID });
-  console.log("¡¡¡¡¡Mostrando!!!!!!! ", isRegistered);
+  //console.log("¡¡¡¡¡Mostrando!!!!!!!", isRegistered);
   if (isRegistered) return;
   let userData = await getUserData(facebookID);
   let chatUser = new Users({
