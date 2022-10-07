@@ -656,7 +656,7 @@ function cargarTarjetas(tarjetas) {
   for (let i = 0; i < 5; i++) {
     tarjetas.push({
       title: listaActual[i].name,
-      image_url: listaActual[i].img[0],
+      image_url: listaActual[i].img,
       subtitle: " " + listaActual[i].precio + " USD",
       buttons: [
         {
