@@ -651,9 +651,10 @@ function atras(sender, action, messages, contexts, parameters) {
     parameters
   );
 }
-function verMas(sender, action, messages, contexts, parameters) {
+
+async function verMas(sender, action, messages, contexts, parameters) {
   handleMessages(messages, sender);
-  handleDialogFlowAction(
+  await handleDialogFlowAction(
     sender,
     "05.Carrusel_Imagenes",
     messages,
