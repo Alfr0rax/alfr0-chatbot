@@ -248,7 +248,7 @@ function carruselImagenes(sender) {
   sendGenericMessage(sender, tarjetas);
 }
 async function VerInformacion(sender, index) {
-  let linfo = obtenerinfo(index);
+  let linfo = await obtenerinfo(index);
   console.log("!!!!!! REVISION FINAL ¡¡¡¡¡¡¡¡", linfo);
   sendTextMessage(sender, "Terminamos");
   /*listaActual[index].img.forEach((imagen) => {
@@ -372,7 +372,6 @@ function setIndex(x) {
 async function obtenerinfo(index) {
   let name = listaActual[index].name;
   let db = await InfoProduct.find({ name });
-  console.log("!!!!!! REVISION 001 ¡¡¡¡¡¡¡¡", db);
   return db.img;
 }
 
