@@ -249,40 +249,38 @@ function carruselImagenes(sender) {
 }
 async function VerInformacion(sender, index) {
   let linfo = await obtenerinfo(index);
-  console.log("!!!!!! REVISION FINAL ¡¡¡¡¡¡¡¡", linfo);
-  sendTextMessage(sender, "Terminamos");
   linfo.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
   await setTimeout(() => {
     sendTextMessage(
       sender,
-      "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
+      "Aquí tienes la Información de \n*" + listaActual[index].name + "*"
     );
     sendTextMessage(
       sender,
       "*Precio:* " +
-        listaActual[i].precio +
+        listaActual[index].precio +
         " USD\n" +
         "*Serie:* " +
-        listaActual[i].serie +
+        listaActual[index].serie +
         "\n" +
         "*Personaje:* " +
-        listaActual[i].personaje +
+        listaActual[index].personaje +
         "\n" +
         "*Escala:* " +
-        listaActual[i].escala +
+        listaActual[index].escala +
         "\n" +
         "*Peso:* " +
-        listaActual[i].peso +
+        listaActual[index].peso +
         "\n" +
         "*Material:* " +
-        listaActual[i].material +
+        listaActual[index].material +
         "\n" +
         "*Stock:* " +
-        listaActual[i].stock
+        listaActual[index].stock
     );
-    sendButtonMessage(sender, "Acciones", [
+    sendButtonMessage(sender, "¿Qué desea hacer?", [
       {
         type: "postback",
         title: "Añadir Pedido",
