@@ -35,6 +35,8 @@ mongoose.connect(
 
 app.use("/messenger", require("./Controllers/facebookController"));
 
+app.use("/api", require("./Routes/api"));
+
 app.get("/", (req, res) => {
   return res.send("Chatbot Funcionando 🤖🤖🤖");
 });

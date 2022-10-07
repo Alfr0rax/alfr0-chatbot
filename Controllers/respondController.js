@@ -6,11 +6,14 @@ const config = require("../config");
 const dialogflow = require("./dialogflowController");
 const { structProtoToJson } = require("../Tools/structFunctions");
 
+//mongodb models
+const Product = require("../Models/Products");
+
 const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
 let listaActual = [];
-let todosproductos = [
+let todosproductos = /*productosDB();*/ [
   {
     id: 10,
     name: "Sword Art Online Nendoroid Swacchao! KIRITO",
@@ -566,7 +569,15 @@ function isDefined(obj) {
 }
 
 //#################### Actions ####################
-function buscarPersonajeSerie(sender, action, messages, contexts, parameters) {
+async function buscarPersonajeSerie(
+  sender,
+  action,
+  messages,
+  contexts,
+  parameters
+) {
+  let db = await Product.collection();
+  console.log(db);
   handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
@@ -673,6 +684,11 @@ function cargarProductos() {
     p.push(todosproductos[i + n]);
   }
   n += 5;
+  return p;
+}
+
+async function productosDB() {
+  let p = [];
   return p;
 }
 function setIndex(x) {
