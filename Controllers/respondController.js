@@ -652,6 +652,7 @@ function atras(sender, action, messages, contexts, parameters) {
   );
 }
 function verMas(sender, action, messages, contexts, parameters) {
+  handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
     "05.Carrusel_Imagenes",
@@ -666,7 +667,7 @@ function verMas(sender, action, messages, contexts, parameters) {
 function cargarTarjetas(tarjetas) {
   listaActual = [];
   listaActual = cargarProductos();
-  for (let i = 0; i < 5 && n <= todosproductos.length; i++) {
+  for (let i = 0; i < 5 && i < listaActual.length; i++) {
     tarjetas.push({
       title: listaActual[i].name,
       image_url: listaActual[i].img,
@@ -693,7 +694,7 @@ function cargarTarjetas(tarjetas) {
 }
 function cargarProductos() {
   let p = [];
-  for (let i = 0; i < 5 && n <= todosproductos.length; i++) {
+  for (let i = 0; i < 5 && n < todosproductos.length; i++) {
     p.push(todosproductos[i + n]);
   }
   n += 5;
