@@ -570,6 +570,7 @@ function isDefined(obj) {
 
 //#################### Actions ####################
 function buscarPersonajeSerie(sender, action, messages, contexts, parameters) {
+  console.log("MOSTRANDO MI LISTA", todosproductos);
   handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
