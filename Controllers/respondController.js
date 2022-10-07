@@ -213,8 +213,8 @@ async function handleDialogFlowAction(
       atras(sender, action, messages, contexts, parameters);
       break;
     case "10.Ver_Mas":
-      handleMessages(messages, sender);
-      //verMas(sender, action, messages, contexts, parameters);
+      //handleMessages(messages, sender);
+      verMas(sender, action, messages, contexts, parameters);
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
@@ -642,7 +642,6 @@ async function VerInformacion(sender, i) {
   }, 4000);
 }
 function atras(sender, action, messages, contexts, parameters) {
-  n -= 5;
   handleDialogFlowAction(
     sender,
     "05.Carrusel_Imagenes",
@@ -653,6 +652,7 @@ function atras(sender, action, messages, contexts, parameters) {
 }
 
 async function verMas(sender, action, messages, contexts, parameters) {
+  listaActual = [];
   handleMessages(messages, sender);
   await handleDialogFlowAction(
     sender,
@@ -666,13 +666,13 @@ async function verMas(sender, action, messages, contexts, parameters) {
 //#################################################
 
 function cargarTarjetas(tarjetas) {
-  listaActual = [];
-  listaActual = cargarProductos();
-  for (let i = 0; i < 5 && i < listaActual.length; i++) {
+  cargarProductos();
+  let i = 0;
+  listaActual.forEach((element) => {
     tarjetas.push({
-      title: listaActual[i].name,
-      image_url: listaActual[i].img,
-      subtitle: " " + listaActual[i].precio + " USD",
+      title: element[i].name,
+      image_url: element[i].img,
+      subtitle: " " + element[i].precio + " USD",
       buttons: [
         {
           type: "postback",
@@ -691,20 +691,14 @@ function cargarTarjetas(tarjetas) {
         },
       ],
     });
-  }
+    i++;
+  });
 }
 function cargarProductos() {
-  let p = [];
   for (let i = 0; i < 5 && n < todosproductos.length; i++) {
-    p.push(todosproductos[i + n]);
+    listaActual.push(todosproductos[i + n]);
+    n++;
   }
-  n += 5;
-  return p;
-}
-
-async function productosDB() {
-  let db = await Product.find({});
-  return db;
 }
 function setIndex(x) {
   index = x;
