@@ -372,7 +372,7 @@ async function obtenerinfo(index) {
   let name = listaActual[index].name;
   let db = await InfoProduct.find({ name });
   let l = db.img;
-  console.log("!!!!!! REVISION 00002 ¡¡¡¡¡¡¡¡", l);
+  console.log("!!!!!! REVISION 00002 ¡¡¡¡¡¡¡¡", db);
   return l;
 }
 
