@@ -654,14 +654,21 @@ function atras(sender, action, messages, contexts, parameters) {
 
 async function verMas(sender, action, messages, contexts, parameters) {
   listaActual = [];
-  await handleMessages(messages, sender);
-  await handleDialogFlowAction(
-    sender,
-    "05.Carrusel_Imagenes",
-    messages,
-    contexts,
-    parameters
-  );
+  if (n <= todosproductos.length) {
+    await handleMessages(messages, sender);
+    await handleDialogFlowAction(
+      sender,
+      "05.Carrusel_Imagenes",
+      messages,
+      contexts,
+      parameters
+    );
+  } else {
+    sendTextMessage(
+      sender,
+      "Lo sentimos, pero esos son todos los productos que tenemos disponibles."
+    );
+  }
 }
 
 //#################################################
@@ -696,7 +703,6 @@ function cargarTarjetas(tarjetas) {
 }
 function cargarListaProductos() {
   let i = 0;
-  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", todosproductos.length, n);
   while (i < cantMostrar && i + n < todosproductos.length) {
     listaActual.push(todosproductos[i + n]);
     i++;
