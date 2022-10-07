@@ -145,11 +145,11 @@ async function getUserData(senderId) {
       }
     );
     console.log("¡¡¡¡¡¡¡¡¡¡¡¡¡DATOS DEL USUARIO!!!!!!!!!!!!!");
-    console.log(userData.data);
+    console.log(userData);
     return userData.data;
   } catch (err) {
     console.log("¡¡¡¡¡¡¡¡¡¡¡¡¡DATOS DEL USUARIO!!!!!!!!!!!!!");
-    console.log(userData.data);
+    console.log(userData);
     console.log("algo salio mal en axios getUserData: ", err);
     return {
       first_name: "",
