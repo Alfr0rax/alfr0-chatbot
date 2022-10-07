@@ -144,7 +144,8 @@ async function getUserData(senderId) {
         },
       }
     );
-
+    console.log("¡¡¡¡¡¡¡¡¡¡¡¡¡DATOS DEL USUARIO!!!!!!!!!!!!!");
+    console.log(userData.data);
     return userData.data;
   } catch (err) {
     console.log("¡¡¡¡¡¡¡¡¡¡¡¡¡DATOS DEL USUARIO!!!!!!!!!!!!!");
