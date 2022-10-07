@@ -13,7 +13,7 @@ const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
 let listaActual = [];
-let todosproductos = productosDB(); /*[
+let todosproductos = []; /*[
   {
     id: 10,
     name: "Sword Art Online Nendoroid Swacchao! KIRITO",
@@ -576,8 +576,8 @@ async function buscarPersonajeSerie(
   contexts,
   parameters
 ) {
-  let db = await Product.find({});
-  console.log("MOSTRANDO CONTENIDO DE LA BASE DE DATOS", db);
+  todosproductos = await Product.find({});
+  console.log("MOSTRANDO CONTENIDO DE LA BASE DE DATOS", todosproductos);
   handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
