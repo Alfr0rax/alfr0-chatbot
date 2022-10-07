@@ -13,7 +13,7 @@ const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
 let listaActual = [];
-let todosproductos = /*productosDB();*/ [
+let todosproductos = productosDB(); /*[
   {
     id: 10,
     name: "Sword Art Online Nendoroid Swacchao! KIRITO",
@@ -184,7 +184,7 @@ let todosproductos = /*productosDB();*/ [
       "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
     ],
   },
-];
+];*/
 async function handleDialogFlowAction(
   sender,
   action,
@@ -688,8 +688,8 @@ function cargarProductos() {
 }
 
 async function productosDB() {
-  let p = [];
-  return p;
+  let db = await Product.find({});
+  return db;
 }
 function setIndex(x) {
   index = x;
