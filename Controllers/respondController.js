@@ -697,7 +697,7 @@ function cargarTarjetas(tarjetas) {
 }
 function cargarListaProductos() {
   let i = 0;
-  while (i < cantMostrar && i + n <= todosproductos.length()) {
+  while (i < cantMostrar && i + n <= todosproductos.length) {
     listaActual.push(todosproductos[i + n]);
     i++;
   }
