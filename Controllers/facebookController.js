@@ -8,6 +8,7 @@ const respond = require("./respondController");
 
 //mongodb models
 const Users = require("../Models/Users");
+const { default: axios } = require("axios");
 
 // Messenger API parameters
 if (!config.FB_PAGE_TOKEN) {
@@ -143,10 +144,11 @@ async function getUserData(senderId) {
         },
       }
     );
-    console.log("¡¡¡¡¡¡¡¡¡¡¡¡¡DATOS DEL USUARIO!!!!!!!!!!!!!");
-    console.log(userData.data);
+
     return userData.data;
   } catch (err) {
+    console.log("¡¡¡¡¡¡¡¡¡¡¡¡¡DATOS DEL USUARIO!!!!!!!!!!!!!");
+    console.log(userData.data);
     console.log("algo salio mal en axios getUserData: ", err);
     return {
       first_name: "",
