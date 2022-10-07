@@ -6,7 +6,7 @@ const UserSchema = new Schema(
     firstName: String,
     lastName: String,
     facebookId: {
-      type: true,
+      type: String,
       unique: true,
     },
     email: String,
