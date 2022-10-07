@@ -13,7 +13,7 @@ const sessionIds = new Map();
 let n = 0; //puntero
 let index = 99;
 let listaActual = [];
-let todosproductos = await Product.find({}); /*[
+let todosproductos = Product.find({}); /*[
   {
     id: 10,
     name: "Sword Art Online Nendoroid Swacchao! KIRITO",
