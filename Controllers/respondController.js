@@ -250,6 +250,7 @@ function carruselImagenes(sender) {
 async function VerInformacion(sender, index) {
   let linfo = obtenerinfo(index);
   console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", linfo);
+  sendTextMessage(sender, "Terminamos");
   /*listaActual[index].img.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
@@ -371,6 +372,7 @@ function setIndex(x) {
 function obtenerinfo(index) {
   let name = listaActual[index].name;
   let db = InfoProduct.findOne({ name });
+  console.log("!!!!!! REVISION 001 ¡¡¡¡¡¡¡¡", db);
   return db.img;
 }
 
