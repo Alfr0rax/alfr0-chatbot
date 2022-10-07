@@ -666,7 +666,8 @@ async function verMas(sender, action, messages, contexts, parameters) {
 //#################################################
 
 function cargarTarjetas(tarjetas) {
-  cargarProductos();
+  cargarListaProductos();
+  console.log("LISTA DE PRODUCTOS", listaActual);
   let i = 0;
   listaActual.forEach((element) => {
     tarjetas.push({
@@ -694,7 +695,7 @@ function cargarTarjetas(tarjetas) {
     i++;
   });
 }
-function cargarProductos() {
+function cargarListaProductos() {
   for (let i = 0; i < 5 && n < todosproductos.length; i++) {
     listaActual.push(todosproductos[i + n]);
     n++;
