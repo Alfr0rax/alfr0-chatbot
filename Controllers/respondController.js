@@ -8,6 +8,7 @@ const { structProtoToJson } = require("../Tools/structFunctions");
 
 //mongodb models
 const Product = require("../Models/Products");
+const InfoProduct = require("../Models/InfoProduct");
 
 const sessionIds = new Map();
 let n = 0; //puntero
@@ -223,6 +224,158 @@ async function handleDialogFlowAction(
   }
 }
 
+//#################### Actions ####################
+async function buscarPersonajeSerie(
+  sender,
+  action,
+  messages,
+  contexts,
+  parameters
+) {
+  todosproductos = await Product.find({});
+  handleMessages(messages, sender);
+  handleDialogFlowAction(
+    sender,
+    "05.Carrusel_Imagenes",
+    messages,
+    contexts,
+    parameters
+  );
+}
+function carruselImagenes(sender) {
+  let tarjetas = [];
+  cargarTarjetas(tarjetas);
+  sendGenericMessage(sender, tarjetas);
+}
+async function VerInformacion(sender, index) {
+  let linfo = obtenerinfo(index);
+  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", linfo);
+  /*listaActual[index].img.forEach((imagen) => {
+    sendImageMessage(sender, imagen);
+  });
+  await setTimeout(() => {
+    sendTextMessage(
+      sender,
+      "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
+    );
+    sendTextMessage(
+      sender,
+      "*Precio:* " +
+        listaActual[i].precio +
+        " USD\n" +
+        "*Serie:* " +
+        listaActual[i].serie +
+        "\n" +
+        "*Personaje:* " +
+        listaActual[i].personaje +
+        "\n" +
+        "*Escala:* " +
+        listaActual[i].escala +
+        "\n" +
+        "*Peso:* " +
+        listaActual[i].peso +
+        "\n" +
+        "*Material:* " +
+        listaActual[i].material +
+        "\n" +
+        "*Stock:* " +
+        listaActual[i].stock
+    );
+    sendButtonMessage(sender, "Acciones", [
+      {
+        type: "postback",
+        title: "Añadir Pedido",
+        payload: "Añadir Pedido",
+      },
+      {
+        type: "postback",
+        title: "Atrás",
+        payload: "Atrás",
+      },
+    ]);
+  }, 4000);*/
+}
+function atras(sender, action, messages, contexts, parameters) {
+  handleDialogFlowAction(
+    sender,
+    "05.Carrusel_Imagenes",
+    messages,
+    contexts,
+    parameters
+  );
+}
+
+async function verMas(sender, action, messages, contexts, parameters) {
+  listaActual = [];
+  if (n < todosproductos.length) {
+    await handleMessages(messages, sender);
+    await handleDialogFlowAction(
+      sender,
+      "05.Carrusel_Imagenes",
+      messages,
+      contexts,
+      parameters
+    );
+  } else {
+    sendTextMessage(
+      sender,
+      "Lo sentimos, pero esos son todos los productos que tenemos disponibles."
+    );
+  }
+}
+
+//################### TOOLS ##############################
+
+function cargarTarjetas(tarjetas) {
+  cargarListaProductos();
+  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", listaActual);
+  let i = 0;
+  listaActual.forEach((element) => {
+    tarjetas.push({
+      title: element.name,
+      image_url: element.img,
+      subtitle: " " + element.precio + " USD",
+      buttons: [
+        {
+          type: "postback",
+          title: "Ver Información",
+          payload: "Ver Información" + i,
+        },
+        {
+          type: "postback",
+          title: "Ver más",
+          payload: "Ver más",
+        },
+        {
+          type: "postback",
+          title: "Finalizar Compra",
+          payload: "Finalizar Compra",
+        },
+      ],
+    });
+    i++;
+  });
+}
+function cargarListaProductos() {
+  let i = 0;
+  while (i < cantMostrar && i + n < todosproductos.length) {
+    listaActual.push(todosproductos[i + n]);
+    i++;
+  }
+  n += i;
+}
+function setIndex(x) {
+  index = x;
+}
+
+function obtenerinfo(index) {
+  let name = listaActual[index].name;
+  let db = InfoProduct.findOne({ name });
+  return db.img;
+}
+
+//########################################################
+
 async function sendToDialogFlow(senderId, messageText) {
   sendTypingOn(senderId);
   try {
@@ -239,7 +392,6 @@ async function sendToDialogFlow(senderId, messageText) {
     console.log("salio mal en sendToDialogflow...", error);
   }
 }
-
 async function handleMessage(message, sender) {
   switch (message.message) {
     case "text": // text
@@ -278,7 +430,6 @@ async function handleMessage(message, sender) {
       break;
   }
 }
-
 async function handleCardMessages(messages, sender) {
   //Envia el Mensaje que se tiene en Dialogflow
   let elements = [];
@@ -317,7 +468,6 @@ async function handleCardMessages(messages, sender) {
   }
   await sendGenericMessage(sender, elements);
 }
-
 async function handleMessages(messages, sender) {
   try {
     let i = 0;
@@ -355,7 +505,6 @@ async function handleMessages(messages, sender) {
     console.log(error);
   }
 }
-
 function handleDialogFlowResponse(sender, response) {
   let responseText = response.fulfillmentMessages.fulfillmentText;
   let messages = response.fulfillmentMessages;
@@ -571,146 +720,6 @@ function isDefined(obj) {
   }
 
   return obj != null;
-}
-
-//#################### Actions ####################
-async function buscarPersonajeSerie(
-  sender,
-  action,
-  messages,
-  contexts,
-  parameters
-) {
-  todosproductos = await Product.find({});
-  handleMessages(messages, sender);
-  handleDialogFlowAction(
-    sender,
-    "05.Carrusel_Imagenes",
-    messages,
-    contexts,
-    parameters
-  );
-}
-function carruselImagenes(sender) {
-  let tarjetas = [];
-  cargarTarjetas(tarjetas);
-  sendGenericMessage(sender, tarjetas);
-}
-async function VerInformacion(sender, i) {
-  listaActual[i].img.forEach((imagen) => {
-    sendImageMessage(sender, imagen);
-  });
-  await setTimeout(() => {
-    sendTextMessage(
-      sender,
-      "Aquí tienes la Información de \n*" + listaActual[i].name + "*"
-    );
-    sendTextMessage(
-      sender,
-      "*Precio:* " +
-        listaActual[i].precio +
-        " USD\n" +
-        "*Serie:* " +
-        listaActual[i].serie +
-        "\n" +
-        "*Personaje:* " +
-        listaActual[i].personaje +
-        "\n" +
-        "*Escala:* " +
-        listaActual[i].escala +
-        "\n" +
-        "*Peso:* " +
-        listaActual[i].peso +
-        "\n" +
-        "*Material:* " +
-        listaActual[i].material +
-        "\n" +
-        "*Stock:* " +
-        listaActual[i].stock
-    );
-    sendButtonMessage(sender, "Acciones", [
-      {
-        type: "postback",
-        title: "Añadir Pedido",
-        payload: "Añadir Pedido",
-      },
-      {
-        type: "postback",
-        title: "Atrás",
-        payload: "Atrás",
-      },
-    ]);
-  }, 4000);
-}
-function atras(sender, action, messages, contexts, parameters) {
-  handleDialogFlowAction(
-    sender,
-    "05.Carrusel_Imagenes",
-    messages,
-    contexts,
-    parameters
-  );
-}
-
-async function verMas(sender, action, messages, contexts, parameters) {
-  listaActual = [];
-  if (n < todosproductos.length) {
-    await handleMessages(messages, sender);
-    await handleDialogFlowAction(
-      sender,
-      "05.Carrusel_Imagenes",
-      messages,
-      contexts,
-      parameters
-    );
-  } else {
-    sendTextMessage(
-      sender,
-      "Lo sentimos, pero esos son todos los productos que tenemos disponibles."
-    );
-  }
-}
-
-//#################################################
-
-function cargarTarjetas(tarjetas) {
-  cargarListaProductos();
-  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", listaActual);
-  listaActual.forEach((element) => {
-    tarjetas.push({
-      title: element.name,
-      image_url: element.img,
-      subtitle: " " + element.precio + " USD",
-      buttons: [
-        {
-          type: "postback",
-          title: "Ver Información",
-          payload: "Ver Información",
-        },
-        {
-          type: "postback",
-          title: "Ver más",
-          payload: "Ver más",
-        },
-        {
-          type: "postback",
-          title: "Finalizar Compra",
-          payload: "Finalizar Compra",
-        },
-      ],
-    });
-  });
-}
-function cargarListaProductos() {
-  let i = 0;
-  while (i < cantMostrar && i + n < todosproductos.length) {
-    listaActual.push(todosproductos[i + n]);
-    i++;
-  }
-  n += i;
-}
-function setIndex(x) {
-  index = x;
 }
 
 module.exports = {
