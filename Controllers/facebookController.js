@@ -137,11 +137,7 @@ async function getUserData(senderId) {
   let access_token = config.FB_PAGE_TOKEN;
   try {
     let userData = await axios.get(
-      "https://graph.facebook.com/" +
-        senderId +
-        "?fields=id,name,email,picture&access_token=" +
-        access_token,
-      //"https://graph.facebook.com/v6.0/" + senderId,
+      "https://graph.facebook.com/v6.0/" + senderId,
       {
         params: {
           access_token,
