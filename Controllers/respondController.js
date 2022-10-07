@@ -369,9 +369,9 @@ function setIndex(x) {
   index = x;
 }
 
-function obtenerinfo(index) {
+async function obtenerinfo(index) {
   let name = listaActual[index].name;
-  let db = InfoProduct.find({ name });
+  let db = await InfoProduct.find({ name });
   console.log("!!!!!! REVISION 001 ¡¡¡¡¡¡¡¡", db);
   return db.img;
 }
