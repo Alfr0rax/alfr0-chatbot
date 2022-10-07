@@ -129,7 +129,7 @@ async function saveUserData(facebookID) {
     firstName: userData.first_name,
     lastName: userData.last_name,
     facebookId: facebookID,
-    profilePic: profile_pic,
+    profilePic: userData.profile_pic,
   });
   chatUser.save((err, res) => {
     if (err) return console.log(err);
