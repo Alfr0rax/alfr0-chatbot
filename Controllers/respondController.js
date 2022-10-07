@@ -213,7 +213,8 @@ async function handleDialogFlowAction(
       atras(sender, action, messages, contexts, parameters);
       break;
     case "10.Ver_Mas":
-      verMas(sender, action, messages, contexts, parameters);
+      handleMessages(messages, sender);
+      //verMas(sender, action, messages, contexts, parameters);
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
@@ -580,7 +581,6 @@ async function buscarPersonajeSerie(
   parameters
 ) {
   todosproductos = await Product.find({});
-  console.log("MOSTRANDO CONTENIDO DE LA BASE DE DATOS", todosproductos);
   handleMessages(messages, sender);
   handleDialogFlowAction(
     sender,
