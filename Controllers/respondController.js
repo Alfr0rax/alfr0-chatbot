@@ -89,9 +89,7 @@ async function VerInformacion(sender, index) {
   let linfo = await obtenerinfo(index);
   interesUser(sender, listaActual[index].name);
   linfo.forEach((imagen) => {
-    setTimeout(async () => {
-      sendImageMessage(sender, imagen);
-    }, 2000);
+    sendImageMessage(sender, imagen);
   });
   await setTimeout(async () => {
     await sendTextMessage(
