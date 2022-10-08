@@ -1,9 +1,8 @@
 const express = require("express");
-const InfoProduct = require("../Models/InfoProduct");
 const router = express.Router();
 const Product = require("../Models/Products");
 const infoProduct = require("../Models/InfoProduct");
-const userInteresed = require("../Models/UserInteresed");
+const offer = require("../Models/Offers");
 
 router.get("/chatbot", (req, res) => {
   res.json({ ok: true, msg: "Esto esta Funcionando bien" });
@@ -46,6 +45,23 @@ router.post("/infoproducts", (req, res) => {
       ok: true,
       msg: "Producto Creado Correctamente",
       product: productDB,
+    });
+  });
+});
+
+router.post("/offers", (req, res) => {
+  let body = req.body;
+  let productImg = new offer({
+    discound: body.discound,
+    description: body.description,
+  });
+  productImg.save((err, offerDB) => {
+    if (err) return res.json({ ok: false, msg: "Hubo un Error" });
+
+    res.json({
+      ok: true,
+      msg: "Oferta Creada Correctamente",
+      product: offerDB,
     });
   });
 });

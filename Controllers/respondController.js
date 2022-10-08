@@ -209,7 +209,7 @@ function cargarTarjetas(tarjetas) {
     tarjetas.push({
       title: element.name,
       image_url: element.img,
-      subtitle: " " + element.precio + " USD",
+      subtitle: " " + element.precio + " ~USD~",
       buttons: [
         {
           type: "postback",
