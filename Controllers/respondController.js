@@ -89,7 +89,9 @@ async function VerInformacion(sender, index) {
   let linfo = await obtenerinfo(index);
   interesUser(sender, listaActual[index].name);
   linfo.forEach((imagen) => {
-    sendImageMessage(sender, imagen);
+    setTimeout(async () => {
+      sendImageMessage(sender, imagen);
+    }, 2000);
   });
   await setTimeout(async () => {
     await sendTextMessage(
@@ -131,7 +133,7 @@ async function VerInformacion(sender, index) {
         payload: "Atrás",
       },
     ]);
-  }, 4000);
+  }, 5000);
 }
 async function atras(sender, action, messages, contexts, parameters) {
   if (n % cantMostrar == 0) {
