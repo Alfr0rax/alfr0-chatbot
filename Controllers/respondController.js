@@ -253,11 +253,11 @@ async function VerInformacion(sender, index) {
     sendImageMessage(sender, imagen);
   });
   await setTimeout(() => {
-    sendTextMessage(
+    await sendTextMessage(
       sender,
       "Aquí tienes la Información de \n*" + listaActual[index].name + "*"
     );
-    sendTextMessage(
+    await sendTextMessage(
       sender,
       "*Precio:* " +
         listaActual[index].precio +
@@ -280,7 +280,7 @@ async function VerInformacion(sender, index) {
         "*Stock:* " +
         listaActual[index].stock
     );
-    sendButtonMessage(sender, "¿Qué desea hacer?", [
+    await sendButtonMessage(sender, "¿Qué desea hacer?", [
       {
         type: "postback",
         title: "Añadir Pedido",
