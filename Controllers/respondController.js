@@ -206,7 +206,7 @@ function cargarTarjetas(tarjetas) {
   cargarListaProductos();
   let i = 0;
   listaActual.forEach((element) => {
-    //let offer = veriOferta(element);
+    let offer = veriOferta(element);
     tarjetas.push({
       title: element.name,
       image_url: element.img,
@@ -263,13 +263,8 @@ function setUserData(data) {
 }
 async function obtenerinfo(index) {
   let name = listaActual[index].name;
-  let db = await extraerDB(InfoProduct, name);
+  let db = await InfoProduct.find({ name });
   return db[0].img;
-}
-async function extraerDB(tabla, elem) {
-  let res = await InfoProduct.find({ elem });
-  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", res);
-  return res;
 }
 function clean() {
   n = 0;
@@ -278,7 +273,6 @@ function clean() {
 }
 function veriOferta(elem) {
   if (elem.oferta != "") {
-    return 0;
   }
   return 1;
 }
