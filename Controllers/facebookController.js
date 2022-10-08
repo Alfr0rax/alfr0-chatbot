@@ -125,6 +125,7 @@ async function saveUserData(facebookID) {
   //console.log("¡¡¡¡¡Mostrando!!!!!!!", isRegistered);
   if (isRegistered) return;
   let userData = await getUserData(facebookID);
+  console.log("!!!!!! REVISION user data ¡¡¡¡¡¡¡¡", userData);
   respond.setUserData(userData);
   let chatUser = new Users({
     firstName: userData.first_name,
