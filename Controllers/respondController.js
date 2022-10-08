@@ -47,7 +47,13 @@ async function handleDialogFlowAction( //Funcion Principal
       break;
     case "10.Ver_Mas":
       //handleMessages(messages, sender);
-      verMas(sender, action, messages, contexts, parameters);
+      verMas(sender);
+      break;
+    case "10.1.Anterior":
+      Anterior(sender, action, messages, contexts, parameters);
+      break;
+    case "10.2.Siguiente":
+      Siguiente(sender, action, messages, contexts, parameters);
       break;
     default:
       // acción no controlada, solo devuelve la respuesta del dialogflow
@@ -145,16 +151,38 @@ async function atras(sender, action, messages, contexts, parameters) {
   );
 }
 
-async function verMas(sender, action, messages, contexts, parameters) {
-  listaActual = [];
-  if (n == cantMostrar) {
+async function verMas(sender) {
+  await sendButtonMessage(
+    sender,
+    "Actualmente se encuentra en la Página *#" + n / cantMostrar + "*",
+    [
+      {
+        type: "postback",
+        title: "Anterior",
+        payload: "Anterior",
+      },
+      {
+        type: "postback",
+        title: "Siguiente",
+        payload: "Siguiente",
+      },
+    ]
+  );
+}
+async function Anterior(sender, action, messages, contexts, parameters) {
+  if (n != cantMostrar) {
+    await handleMessages(messages, sender);
+    atras(sender, action, messages, contexts, parameters);
+  } else {
     sendTextMessage(
       sender,
-      "Lo sentimos, pero nos encontramos en la primer página."
+      "Lo sentimos, pero nos encontramos en la primer pagina del catalogo"
     );
-    return;
   }
+}
+async function Siguiente(sender, action, messages, contexts, parameters) {
   if (n < todosproductos.length) {
+    listaActual = [];
     await handleMessages(messages, sender);
     await handleDialogFlowAction(
       sender,
