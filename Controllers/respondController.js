@@ -80,7 +80,7 @@ function carruselImagenes(sender) {
 }
 async function VerInformacion(sender, index) {
   let linfo = await obtenerinfo(index);
-  //interesUser(sender, listaActual[index].name);
+  interesUser(sender, listaActual[index].name);
   linfo.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
