@@ -295,11 +295,13 @@ async function VerInformacion(sender, index) {
   }, 4000);
 }
 function atras(sender, action, messages, contexts, parameters) {
+  console.log("!!!!!! REVISION DE N¡¡¡¡¡¡¡¡", n);
   if (n % 5 == 0) {
     n -= 5;
   } else {
     n -= n % 5;
   }
+  console.log("!!!!!! REVISION DE N¡¡¡¡¡¡¡¡", n);
   handleDialogFlowAction(
     sender,
     "05.Carrusel_Imagenes",
