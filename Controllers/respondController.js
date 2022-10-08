@@ -263,7 +263,7 @@ function setUserData(data) {
 }
 async function obtenerinfo(index) {
   let name = listaActual[index].name;
-  let db = extraerDB(InfoProduct, name);
+  let db = await extraerDB(InfoProduct, name);
   return db[0].img;
 }
 async function extraerDB(tabla, elem) {
