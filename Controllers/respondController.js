@@ -203,7 +203,7 @@ async function Siguiente(sender, action, messages, contexts, parameters) {
 
 //################### TOOLS ##############################
 
-async function cargarTarjetas(tarjetas) {
+function cargarTarjetas(tarjetas) {
   cargarListaProductos();
   let i = 0;
   listaActual.forEach(async (element) => {
