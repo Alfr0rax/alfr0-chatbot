@@ -155,7 +155,7 @@ async function verMas(sender) {
   await sendButtonMessage(
     sender,
     "Actualmente se encuentra en la Página *#" +
-      Math.floor(n / cantMostrar) +
+      -Math.floor(-n / cantMostrar) +
       "*",
     [
       {
