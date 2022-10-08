@@ -10,6 +10,7 @@ const { structProtoToJson } = require("../Tools/structFunctions");
 const Product = require("../Models/Products");
 const InfoProduct = require("../Models/InfoProduct");
 const UserInteresed = require("../Models/UserInteresed");
+const Offer = require("../Models/Offers");
 
 const sessionIds = new Map();
 let n = 0; //puntero
@@ -207,6 +208,7 @@ function cargarTarjetas(tarjetas) {
   let i = 0;
   listaActual.forEach((element) => {
     let offer = veriOferta(element);
+    console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", offer);
     tarjetas.push({
       title: element.name,
       image_url: element.img,
@@ -271,8 +273,11 @@ function clean() {
   listaActual = [];
   todosproductos = [];
 }
-function veriOferta(elem) {
-  if (elem.oferta != "") {
+async function veriOferta(elem) {
+  let oferta = elem.oferta;
+  if (oferta != "") {
+    let db = await Offer.find({ oferta });
+    return 1 - db.discound;
   }
   return 1;
 }
