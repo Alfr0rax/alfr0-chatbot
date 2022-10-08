@@ -154,7 +154,9 @@ async function atras(sender, action, messages, contexts, parameters) {
 async function verMas(sender) {
   await sendButtonMessage(
     sender,
-    "Actualmente se encuentra en la Página *#" + n / cantMostrar + "*",
+    "Actualmente se encuentra en la Página *#" +
+      math.floor(n / cantMostrar) +
+      "*",
     [
       {
         type: "postback",
@@ -177,7 +179,7 @@ async function Anterior(sender, action, messages, contexts, parameters) {
   } else {
     sendTextMessage(
       sender,
-      "Lo sentimos, pero nos encontramos en la primer pagina del catalogo"
+      "Lo sentimos, pero nos encontramos en pagina *#1* del catalogo"
     );
   }
 }
