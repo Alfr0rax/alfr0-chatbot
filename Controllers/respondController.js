@@ -172,6 +172,7 @@ async function verMas(sender) {
 async function Anterior(sender, action, messages, contexts, parameters) {
   if (n != cantMostrar) {
     await handleMessages(messages, sender);
+    n -= cantMostrar;
     atras(sender, action, messages, contexts, parameters);
   } else {
     sendTextMessage(
