@@ -15,178 +15,8 @@ let n = 0; //puntero
 let index = 99;
 let cantMostrar = 5;
 let listaActual = [];
-let todosproductos = []; /*[
-  {
-    id: 10,
-    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Kirito",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-    ],
-  },
-  {
-    id: 20,
-    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Asuna",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-    ],
-  },
-  {
-    id: 30,
-    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Kirito",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-    ],
-  },
-  {
-    id: 40,
-    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Asuna",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-    ],
-  },
-  {
-    id: 50,
-    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Kirito",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-    ],
-  },
-  {
-    id: 60,
-    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Asuna",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-    ],
-  },
-  {
-    id: 70,
-    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Kirito",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-    ],
-  },
-  {
-    id: 80,
-    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Asuna",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-    ],
-  },
-  {
-    id: 90,
-    name: "Sword Art Online Nendoroid Swacchao! KIRITO",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Kirito",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59795-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59789-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59791-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-      "https://www.megaotaku.com/59793-medium_default/sword-art-online-nendoroid-swacchao-kirito.jpg",
-    ],
-  },
-  {
-    id: 100,
-    name: "Sword Art Online Alicization Coreful Figure ASUNA Japanese Kimono Ver. (Taito)",
-    precio: 45,
-    serie: "Sword Art Online",
-    personaje: "Asuna",
-    escala: "No (Altura: 9 cm)",
-    peso: "214g",
-    material: "PVC, ABS",
-    stock: 5,
-    img: [
-      "https://www.megaotaku.com/59796-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59797-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59799-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-      "https://www.megaotaku.com/59801-large_default/sword-art-online-nendoroid-swacchao-asuna.jpg",
-    ],
-  },
-];*/
+let todosproductos = [];
+let userData = {};
 async function handleDialogFlowAction(
   sender,
   action,
@@ -249,6 +79,7 @@ function carruselImagenes(sender) {
 }
 async function VerInformacion(sender, index) {
   let linfo = await obtenerinfo(index);
+  interesUser(sender, listaActual[index].name);
   linfo.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
@@ -360,6 +191,18 @@ function cargarTarjetas(tarjetas) {
     i++;
   });
 }
+function interesUser(sender, nameProduct) {
+  let chatUser = new Users({
+    firstName: userData.first_name,
+    lastName: userData.last_name,
+    facebookId: sender,
+    nameProduct: nameProduct,
+  });
+  chatUser.save((err, res) => {
+    if (err) return console.log(err);
+    console.log("Se creó un Interés de Usuario: ", res);
+  });
+}
 function cargarListaProductos() {
   let i = 0;
   while (i < cantMostrar && i + n < todosproductos.length) {
@@ -371,7 +214,9 @@ function cargarListaProductos() {
 function setIndex(x) {
   index = x;
 }
-
+function setUserData(data) {
+  userData = data;
+}
 async function obtenerinfo(index) {
   let name = listaActual[index].name;
   let db = await InfoProduct.find({ name });
@@ -730,4 +575,5 @@ module.exports = {
   sendToDialogFlow,
   sendTextMessage,
   setIndex,
+  setUserData,
 };

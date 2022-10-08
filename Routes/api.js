@@ -3,6 +3,7 @@ const InfoProduct = require("../Models/InfoProduct");
 const router = express.Router();
 const Product = require("../Models/Products");
 const infoProduct = require("../Models/InfoProduct");
+const userInteresed = require("../Models/UserInteresed");
 
 router.get("/chatbot", (req, res) => {
   res.json({ ok: true, msg: "Esto esta Funcionando bien" });
