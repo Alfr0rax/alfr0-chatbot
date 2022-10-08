@@ -29,10 +29,11 @@ async function handleDialogFlowAction(
 
   switch (action) {
     case "input.welcome":
-      sendTextMessage(
+      /*//*sendTextMessage(
         sender,
-        'Buenas, soy el Asistente Virtual de la tienda *"AnimeX"*¿En qué lo puedo ayudar?'
-      );
+        'Buenas, soy el Asistente Virtual de la tienda *"AnimeX"*\n¿En qué lo puedo ayudar?'
+      );*/
+      handleMessages(messages, sender);
       break;
     case "03.2.BuscarPersonaje-Serie":
       n = 0;
