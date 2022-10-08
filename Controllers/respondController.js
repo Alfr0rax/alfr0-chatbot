@@ -252,7 +252,7 @@ async function VerInformacion(sender, index) {
   linfo.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
-  await setTimeout(() => {
+  await setTimeout(async () => {
     await sendTextMessage(
       sender,
       "Aquí tienes la Información de \n*" + listaActual[index].name + "*"
