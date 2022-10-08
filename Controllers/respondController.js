@@ -203,11 +203,11 @@ async function Siguiente(sender, action, messages, contexts, parameters) {
 
 //################### TOOLS ##############################
 
-function cargarTarjetas(tarjetas) {
+async function cargarTarjetas(tarjetas) {
   cargarListaProductos();
   let i = 0;
-  listaActual.forEach((element) => {
-    let offer = veriOferta(element);
+  listaActual.forEach(async (element) => {
+    let offer = await veriOferta(element);
     console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", offer);
     tarjetas.push({
       title: element.name,
