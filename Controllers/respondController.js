@@ -87,7 +87,7 @@ function carruselImagenes(sender) {
 }
 async function VerInformacion(sender, index) {
   let linfo = await obtenerinfo(index);
-  interesUser(sender, listaActual[index].name);
+  interesUser(sender, listaActual[index]);
   linfo.forEach((imagen) => {
     sendImageMessage(sender, imagen);
   });
@@ -131,7 +131,7 @@ async function VerInformacion(sender, index) {
         payload: "Atrás",
       },
     ]);
-  }, 5000);
+  }, 4000);
 }
 async function atras(sender, action, messages, contexts, parameters) {
   if (n % cantMostrar == 0) {
@@ -231,12 +231,15 @@ function cargarTarjetas(tarjetas) {
     i++;
   });
 }
-function interesUser(sender, nameProduct) {
+function interesUser(sender, product) {
+  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", userData);
   let chatUser = new UserInteresed({
     firstName: userData.first_name,
     lastName: userData.last_name,
     facebookId: sender,
-    nameProduct: nameProduct,
+    nameProduct: product.name,
+    nameCharacter: product.personaje,
+    serie: product.serie,
   });
   chatUser.save((err, res) => {
     if (err) return console.log(err);
