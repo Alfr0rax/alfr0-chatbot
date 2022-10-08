@@ -36,7 +36,6 @@ async function handleDialogFlowAction(
       handleMessages(messages, sender);
       break;
     case "03.2.BuscarPersonaje-Serie":
-      n = 0;
       buscarPersonajeSerie(sender, action, messages, contexts, parameters);
       break;
     case "04.Ubicación":
@@ -70,6 +69,7 @@ async function buscarPersonajeSerie(
   contexts,
   parameters
 ) {
+  clean();
   todosproductos = await Product.find({});
   handleMessages(messages, sender);
   handleDialogFlowAction(
@@ -231,6 +231,11 @@ async function obtenerinfo(index) {
   let name = listaActual[index].name;
   let db = await InfoProduct.find({ name });
   return db[0].img;
+}
+function clean() {
+  n = 0;
+  listaActual = [];
+  todosproductos = [];
 }
 
 //########################################################
