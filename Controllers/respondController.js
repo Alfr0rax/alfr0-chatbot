@@ -267,7 +267,9 @@ async function obtenerinfo(index) {
   return db[0].img;
 }
 async function extraerDB(tabla, elem) {
-  return await tabla.find({ elem });
+  let res = await tabla.find({ elem });
+  console.log("!!!!!! REVISION ¡¡¡¡¡¡¡¡", res);
+  return res;
 }
 function clean() {
   n = 0;
