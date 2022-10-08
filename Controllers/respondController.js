@@ -18,21 +18,15 @@ let cantMostrar = 5;
 let listaActual = [];
 let todosproductos = [];
 let userData = {};
-async function handleDialogFlowAction(
+async function handleDialogFlowAction( //Funcion Principal
   sender,
   action,
   messages,
   contexts,
   parameters
 ) {
-  let idsel = 0;
-
   switch (action) {
     case "input.welcome":
-      /*//*sendTextMessage(
-        sender,
-        'Buenas, soy el Asistente Virtual de la tienda *"AnimeX"*\n¿En qué lo puedo ayudar?'
-      );*/
       handleMessages(messages, sender);
       break;
     case "03.2.BuscarPersonaje-Serie":
@@ -153,6 +147,13 @@ async function atras(sender, action, messages, contexts, parameters) {
 
 async function verMas(sender, action, messages, contexts, parameters) {
   listaActual = [];
+  if (n == cantMostrar) {
+    sendTextMessage(
+      sender,
+      "Lo sentimos, pero nos encontramos en la primer página."
+    );
+    return;
+  }
   if (n < todosproductos.length) {
     await handleMessages(messages, sender);
     await handleDialogFlowAction(
