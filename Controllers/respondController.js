@@ -294,15 +294,14 @@ async function VerInformacion(sender, index) {
     ]);
   }, 4000);
 }
-function atras(sender, action, messages, contexts, parameters) {
-  console.log("!!!!!! REVISION DE N¡¡¡¡¡¡¡¡", n);
-  if (n % 5 == 0) {
-    n -= 5;
+async function atras(sender, action, messages, contexts, parameters) {
+  if (n % cantMostrar == 0) {
+    n -= cantMostrar;
   } else {
-    n -= n % 5;
+    n -= n % cantMostrar;
   }
-  console.log("!!!!!! REVISION DE N¡¡¡¡¡¡¡¡", n);
-  handleDialogFlowAction(
+  listaActual = [];
+  await handleDialogFlowAction(
     sender,
     "05.Carrusel_Imagenes",
     messages,
