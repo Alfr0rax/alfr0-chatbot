@@ -9,6 +9,7 @@ const { structProtoToJson } = require("../Tools/structFunctions");
 //mongodb models
 const Product = require("../Models/Products");
 const InfoProduct = require("../Models/InfoProduct");
+const UserInteresed = require("../Models/UserInteresed");
 
 const sessionIds = new Map();
 let n = 0; //puntero
@@ -192,7 +193,7 @@ function cargarTarjetas(tarjetas) {
   });
 }
 function interesUser(sender, nameProduct) {
-  let chatUser = new Users({
+  let chatUser = new UserInteresed({
     firstName: userData.first_name,
     lastName: userData.last_name,
     facebookId: sender,
