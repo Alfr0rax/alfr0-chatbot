@@ -28,6 +28,12 @@ async function handleDialogFlowAction(
   let idsel = 0;
 
   switch (action) {
+    case "input.welcome":
+      sendTextMessage(
+        sender,
+        'Buenas, soy el Asistente Virtual de la tienda *"AnimeX"*¿En qué lo puedo ayudar?'
+      );
+      break;
     case "03.2.BuscarPersonaje-Serie":
       n = 0;
       buscarPersonajeSerie(sender, action, messages, contexts, parameters);
