@@ -206,10 +206,11 @@ function cargarTarjetas(tarjetas) {
   cargarListaProductos();
   let i = 0;
   listaActual.forEach((element) => {
+    //let offer = veriOferta(element);
     tarjetas.push({
       title: element.name,
       image_url: element.img,
-      subtitle: " " + element.precio + " ~USD~",
+      subtitle: " " + element.precio + " USD",
       buttons: [
         {
           type: "postback",
@@ -262,13 +263,22 @@ function setUserData(data) {
 }
 async function obtenerinfo(index) {
   let name = listaActual[index].name;
-  let db = await InfoProduct.find({ name });
+  let db = extraerDB(InfoProduct, name);
   return db[0].img;
+}
+async function extraerDB(tabla, elem) {
+  return await tabla.find({ elem });
 }
 function clean() {
   n = 0;
   listaActual = [];
   todosproductos = [];
+}
+function veriOferta(elem) {
+  if (elem.oferta != "") {
+    return 0;
+  }
+  return 1;
 }
 
 //########################################################

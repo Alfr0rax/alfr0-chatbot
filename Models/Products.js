@@ -15,6 +15,7 @@ const ProductSchema = new Schema(
     peso: String,
     material: String,
     stock: Number,
+    oferta: String,
     img: String,
   },
   { timestamps: true }
